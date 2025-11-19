@@ -15,7 +15,7 @@ export const SITE = {
 
 export const ME = {
     name: "Zeek Pardo",
-    profession: "Technical Operations & Automation Specialist | AI Systems Architect",
+    profession: "Technical Operations & Automation & AI Systems Specialist",
     profileImage: "zeek-avatar.png",
     profileFacts: [
         {

@@ -203,136 +203,234 @@ import SkillCard from "./SkillCard.astro";
             </button>
             <div class="accordion-content px-6 py-4 hidden" data-section="section5">
         
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">My Approach: Modular Bot Architecture for Complex Workflows</h3>
-            <p class="mb-4">
-                Instead of creating a single monolithic prompt that tries to handle everything, I designed a modular system with specialized agents for each stage of the Trust & Safety workflow. This approach minimizes false positives, reduces token costs, and ensures each bot excels at its specific task.
-            </p>
-            <p class="mb-4">
-                <a href="/projects/trust-safety-llm-architecture" class="text-blue-600 hover:text-blue-800 underline font-medium">→ View complete Trust & Safety LLM Architecture implementation</a>
-            </p>
-        </div>
-
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">System Architecture Overview</h3>
-            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg font-mono text-sm">
-                <pre>1. Keyword Pre-Filter (Front Rules - No LLM)
-   ↓
-2. Intent Classification Bot (Focused triage)
-   ├─→ Security Question → Route to Product Support
-   ├─→ Feature Request → Route to Product Support  
-   └─→ Incident Report → Continue to assessment
-   ↓
-3. Evidence Assessment Bot (Detailed analysis)
-   ├─→ Clear Evidence → Information Gathering
-   ├─→ Social Scraping → Education Bot
-   └─→ Insufficient Info → Information Gathering
-   ↓
-4. Information Gathering Bot (Conversational)
-   - Collects: Names, Timeline, Behaviors, System Access
-   - Custom scenarios: Active breach, Human request
-   ↓
-5. Auto-Escalation OR Education Bot
-   - Confirmed breach → Human handoff with complete package
-   - No breach → Customer education on social scraping</pre>
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Example: Intent Classification Bot Prompt</h3>
-            <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-sm">
-                <pre>You are classifying support messages for Planning Center's Trust & Safety team.
-
-Your ONLY job is to determine customer intent. You do NOT:
-- Respond to the customer
-- Gather information  
-- Assess severity
-- Make escalation decisions
-
-Classify into EXACTLY ONE category:
-
-INCIDENT_REPORT - Customer reports something bad HAPPENED:
-✓ "Someone hacked our account"
-✓ "We're getting scam texts from fake pastor"
-✓ "Unauthorized person joined our group"
-✓ Past tense or present perfect tense
-
-SECURITY_QUESTION - Customer asks HOW TO use security features:
-✓ "How do I enable 2-step verification?"
-✓ "Can I see who logged into my account?"
-✓ Questions about features, not incidents
-
-FEATURE_REQUEST - Customer wants features we don't have:
-✓ "Can you add IP address restrictions?"
-✓ "I wish we had session timeout"
-✓ Requests for new capabilities
-
-Output format: Just the category name, nothing else.</pre>
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Why This Modular Approach Works Better</h3>
-            
-            <div class="mb-4">
-                <h4 class="text-lg font-medium mb-2">1. Specialized Focus = Higher Accuracy</h4>
-                <ul class="list-disc list-inside ml-4 space-y-1">
-                    <li>Each bot has ONE job it does exceptionally well</li>
-                    <li>Intent classifier: 95%+ accuracy on routing decisions</li>
-                    <li>Evidence assessor: 85%+ accuracy on breach detection</li>
-                    <li>No cognitive overload from trying to do everything</li>
+        <div class="mb-6 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+            <div class="prose prose-gray dark:prose-invert max-w-none">
+                <h1 class="text-2xl font-bold mb-4">Planning Center Trust & Safety Classifier — Three‑Phase System</h1>
+                
+                <h2 class="text-xl font-semibold mb-3">Why This Was Built in Three Phases</h2>
+                
+                <p class="mb-4">Running Trust & Safety analysis on <strong>every incoming ticket</strong> demands a design that balances speed, cost, and accuracy without overwhelming the LLM or generating false alarms. Splitting the classifier into three passes gives us the best trade‑offs.</p>
+                
+                <h3 class="text-lg font-semibold mb-3">Speed</h3>
+                
+                <p class="mb-4">Most tickets are harmless. Phase 1 lets the model make a fast, cheap judgment about whether the message <em>might</em> be Trust & Safety–related. Only the small fraction of suspicious tickets move on to deeper analysis.</p>
+                
+                <h3 class="text-lg font-semibold mb-3">Cost Control</h3>
+                
+                <p class="mb-4">LLM usage scales with tokens. Instead of running a heavy, context‑rich classifier on every message, the system uses:</p>
+                
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li><strong>Phase 1:</strong> ultra‑light, ultra‑cheap pre‑scan</li>
+                    <li><strong>Phase 2:</strong> deeper Planning Centepecific classification only for tickets flagged by Phase 1</li>
+                    <li><strong>Phase 3:</strong> small, structured output to pass to automations or risk workflows</li>
                 </ul>
-            </div>
-
-            <div class="mb-4">
-                <h4 class="text-lg font-medium mb-2">2. Cost Efficiency Through Smart Filtering</h4>
-                <ul class="list-disc list-inside ml-4 space-y-1">
-                    <li>Keyword pre-filter eliminates 90% of messages (no LLM cost)</li>
-                    <li>Intent classifier uses minimal tokens (~170 per message)</li>
-                    <li>Only complex cases reach expensive conversational bot</li>
-                    <li>Monthly cost: ~$1.35 vs. $2,400 human time saved</li>
+                
+                <p class="mb-4">This architecture keeps your monthly LLM bill predictable.</p>
+                
+                <h3 class="text-lg font-semibold mb-3">Redundancy & Accuracy</h3>
+                
+                <p class="mb-4">Security work benefits from redundancy. Two independent classification checkpoints dramatically reduce:</p>
+                
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>false positives (mislabeling normal support as T&S)</li>
+                    <li>false negatives (missing impersonation, data exposure, or scam attempts)</li>
                 </ul>
-            </div>
-
-            <div class="mb-4">
-                <h4 class="text-lg font-medium mb-2">3. Intelligent Escalation Paths</h4>
-                <ul class="list-disc list-inside ml-4 space-y-1">
-                    <li>Active breach scenario triggers urgent @here Slack alerts</li>
-                    <li>Social scraping routes to education (no escalation needed)</li>
-                    <li>Unclear cases get human review with partial context</li>
-                    <li>Complete handoff packages eliminate re-asking questions</li>
+                
+                <p class="mb-4">The model must say "YES" twice before a ticket is flagged as Trust & Safety. This protects both the team and the customer experience.</p>
+                
+                <h3 class="text-lg font-semibold mb-3">LLM Model</h3>
+                
+                <p class="mb-4">Anthropic <strong>Claude 4.5 Haiku</strong> is the recommended model for this system because it balances speed, cost, and safety-critical accuracy better than peers.</p>
+                
+                <p class="mb-4"><strong>Why Haiku 4.5 over OpenAI or Gemini:</strong></p>
+                
+                <ul class="list-disc list-inside ml-4 mb-4">
+                    <li>Haiku is engineered for <strong>high‑volume classification</strong>, delivering extremely low latency and very low per‑token cost, ideal for running on <em>every incoming ticket</em>.</li>
+                    <li>Claude models, including Haiku, demonstrate particularly strong performance in <strong>hallucination resistance</strong>, which is essential for Trust & Safety workflows where false positives are disruptive and false negatives are dangerous.</li>
+                    <li>Haiku excels at <strong>structured extraction</strong> and <strong>adhering to schema</strong>, which helps ensure the classifier consistently outputs clean 0/1 flags and JSON.</li>
+                    <li>Unlike some models optimized for creativity or long‑form reasoning, Haiku is optimized for <strong>fast, deterministic decision‑making</strong>, which pairs naturally with the three‑phase architecture.</li>
+                    <li>Compared to OpenAI's fast models (e.g., GPT‑4o Mini) or Gemini Flash, Haiku tends to be more conservative and safer in <strong>edge‑case security scenarios</strong>, reducing noisy escalations.</li>
                 </ul>
-            </div>
+                
+                <p class="mb-6">Overall, Haiku provides the precise blend of <strong>speed, cost‑efficiency, and reliability</strong> needed for Planning Center's continuous T&S scanning.</p>
+                
+                <h2 class="text-xl font-semibold mb-3">Flow Map</h2>
+                
+                <pre class="bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mb-4 overflow-x-auto"><code>{`                           ┌──────────────────────────┐
+                           │   Incoming Ticket Text    │
+                           └──────────────┬───────────┘
+                                          │
+                                          ▼
+                 ┌────────────────────────────────────────────────┐
+                 │ PHASE 1 — Identify Trust & Safety Indicators   │
+                 │ (Scan for ANY Planning Center specific threat) │
+                 └──────────────┬─────────────────────────────────┘
+                                │
+             ┌──────────────────┼────────────────────┐
+             ▼                                       ▼
+ ┌────────────────────────┐              ┌──────────────────────────┐
+ │ ts_flag_phase1 = 1     │              │ ts_flag_phase1 = 0        │
+ │ Threat Indicators Found│              │ No Threat Indicators Found│
+ └──────────────┬─────────┘              └────────────┬──────────────┘
+                │                                      │
+                ▼                                      ▼
+ ┌──────────────────────────────────┐        ┌──────────────────────────┐
+ │ Proceed to Phase 2               │        │ CLASSIFY = Not T&S       │
+ │ (Check for false positives)      │        │ OUTPUT: {is_ts:0}        │
+ └──────────────────┬───────────────┘        └──────────────────────────┘
+                    │
+                    ▼
+       ┌───────────────────────────────────────────┐
+       │ PHASE 2 — NOT Trust & Safety Indicators    │
+       │ (Filter out harmless & normal support)     │
+       └──────────────────┬────────────────────────┘
+                           │
+             ┌─────────────┼───────────────────────────┐
+             ▼                                             ▼
+ ┌──────────────────────────────┐             ┌──────────────────────────┐
+ │ ts_flag_phase2 = 1           │             │ ts_flag_phase2 = 0        │
+ │ Still suspicious after filter│             │ Benign / Normal Ticket    │
+ └──────────────┬───────────────┘             └────────────┬──────────────┘
+                │                                               │
+                ▼                                               ▼
+     ┌───────────────────────────────────┐           ┌──────────────────────────┐
+     │ Proceed to Phase 3                │           │ CLASSIFY = Not T&S       │
+     │ (Final structured output)         │           │ OUTPUT: {is_ts:0}        │
+     └──────────────────┬────────────────┘           └──────────────────────────┘
+                        │
+                        ▼
+        ┌──────────────────────────────────────────────┐
+        │ PHASE 3 — Final Classification Output         │
+        │ (Only if Phase 1 = 1 AND Phase 2 = 1)         │
+        └──────────────────┬────────────────────────────┘
+                           │
+                           ▼
+              ┌───────────────────────────────────────────┐
+              │ OUTPUT JSON                                │
+              │ {                                          │
+              │   "is_ts": 1,                              │
+              │   "category": "<T&S category>",            │
+              │   "confidence": "<0–1 or low/med/high>"    │
+              │ }                                          │
+              └──────────────────┬────────────────────────┘
+                                 │
+                                 ▼
+                 ┌───────────────────────────────────────┐
+                 │ ROUTE to Trust & Safety Queue          │
+                 │ (Only confirmed cases)                 │
+                 └───────────────────────────────────────┘`}</code></pre>
+                
+                <h2 class="text-xl font-semibold mb-3">Phase 1: Initial Trust & Safety Detection</h2>
+                
+                <pre class="bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mb-6 overflow-x-auto"><code>{`You are a Planning Center Trust & Safety detector.
 
-            <div class="mb-4">
-                <h4 class="text-lg font-medium mb-2">4. Measurable Business Impact</h4>
-                <ul class="list-disc list-inside ml-4 space-y-1">
-                    <li>Auto-resolution rate: 40-50% of T&S tickets</li>
-                    <li>Average time saved: 1.5+ hours daily</li>
-                    <li>Human agents handle only complex cases</li>
-                    <li>ROI: $1,799 monthly savings</li>
-                </ul>
+Analyze the following customer message and determine whether it contains any Planning Center specific Trust & Safety risks.
+
+Flag as T&S (1) if the message contains **any** of the following:
+
+A. Impersonation / Social Engineering
+- Impersonating pastor, staff, volunteer
+- Scam messages pretending to be leadership
+- Someone asking to change another person's contact/login info
+- Someone requesting Directory access while pretending to be staff or a congregant
+
+B. Profile Takeover Indicators
+- Claims of compromised profiles
+- Unexpected login activity
+- Someone gaining access to another person's profile
+- Suspicious changes to profile data or permissions
+
+C. Suspicious Access Requests
+- Requests for Directory access
+- Requests to merge profiles where identity is unclear
+- Suspicious or unknown people requesting to join Groups
+- Unrecognized new profiles joining Groups
+
+D. Scam Patterns
+- Scam texts/emails involving Planning Center or pastors
+- Phishing resembling Planning Center login
+- Messages demanding money, gift cards, or private info
+
+E. Suspicious Email / Login Block Indicators
+- "I'm not receiving my login code"
+- "My congregants are receiving strange messages"
+- "I'm receiving suspicious group join requests"
+- Issues consistent with the Suspicious Email Address List
+
+F. Data Exposure Risks
+- Directory shared insecurely
+- Overly broad Directory or Group visibility
+- Over-permissioned roles exposing member info
+- Unrecognized individuals seeing private data
+
+If ANY of these appear → respond:
+
+{ "ts_flag_phase1": "1:E" }
+
+If none appear → respond:
+
+{ "ts_flag_phase1": 0 }
+
+Return only 0 or 1.`}</code></pre>
+                
+                <h2 class="text-xl font-semibold mb-3">Phase 2: False Positive Filter</h2>
+                
+                <pre class="bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mb-6 overflow-x-auto"><code>{`You are a Planning Center Trust & Safety false-positive filter.
+
+Review the message and determine if it should NOT be routed to Trust & Safety.
+
+Do NOT classify as T&S if the issue is ONLY:
+
+Normal Support or Admin Tasks
+- Feature questions, billing, scheduling, volunteers
+- Password resets without impersonation concerns
+- Login method confusion without suspicious behavior
+- 2SV trouble with no sign of abuse
+- General confusion: "I can't find my group," etc.
+- Emotional or frustrated tone without a threat pattern
+
+Non-malicious Login Issues
+- Mistyped email or phone number
+- New device or phone number
+- Confusion about login codes without any impersonation risk
+
+Benign Church Center Questions
+- Event, calendar, registration, QR code, workflow questions
+- Group-related questions with no suspicious join attempts
+
+Benign Profile Changes
+- User correcting their own info
+- No identity uncertainty, no request involving another person
+
+If the message fits ANY of these benign categories → it is NOT T&S.
+
+Respond:
+
+{ "ts_flag_phase2": 0 }
+
+If none of these benign cases apply, and the earlier T&S concerns still stand → respond:
+
+{ "ts_flag_phase2": 1 }
+
+OUTPUT FORMAT (strict): { "ts_flag": 0 or 1, "category": "A/B/C/D/E/F or none", "confidence": low | medium | high }`}</code></pre>
+                
+                <h2 class="text-xl font-semibold mb-3">Phase 3: Final Classification</h2>
+                
+                <pre class="bg-gray-100 dark:bg-gray-700 p-4 rounded text-sm mb-4 overflow-x-auto"><code>{`You are generating the final Trust & Safety classification.
+
+Provide output in exactly this JSON format:
+
+{
+  "is_ts": 1,
+  "category": "impersonation | takeover | suspicious_access | scam | suspicious_login | data_exposure",
+  "confidence": "low | medium | high"
+}
+
+Rules:
+- "category" must match the dominant Planning Center threat vector from Phase 1.
+- "confidence" reflects how clearly the message fits that category.`}</code></pre>
             </div>
         </div>
-
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Monolithic vs. Modular Architecture</h3>
-            <p class="mb-4">
-                I initially explored a <a href="/projects/trust-safety-monolithic-prompt" class="text-blue-600 hover:text-blue-800 underline">monolithic single-prompt approach</a> that tried to handle classification, assessment, conversation, and escalation in one massive prompt (~2000 tokens). While functional, this approach suffered from cognitive overload, token inefficiency, and maintenance complexity.
-            </p>
-            <p class="mb-4">
-                The modular system proved superior because each specialized agent excels at its specific task rather than being mediocre at everything. This architectural decision demonstrates that effective LLM engineering requires strategic systems thinking, not just prompt crafting.
-            </p>
-        </div>
-
-        <div class="mb-6">
-            <h3 class="text-xl font-semibold mb-3">Key Insight</h3>
-            <p class="mb-4">
-                The best LLM implementations aren't about writing perfect prompts—they're about architecting systems where each component excels at its specific task. By breaking complex workflows into specialized agents, we achieve better accuracy, lower costs, and happier customers.
-            </p>
-            <p>
-                This modular approach turns an overwhelming Trust & Safety challenge into a series of manageable, measurable victories.
-            </p>
             </div>
         </div>
 
@@ -375,28 +473,10 @@ Output format: Just the category name, nothing else.</pre>
                     <li>Agent sees confirmation and continues helping customer</li>
                 </ol>
             </div>
+        </div>
             </div>
         </div>
 
-        {/* Accordion Section 7 - Work Experience */}
-        <div class="accordion-item border border-gray-200 dark:border-gray-700 rounded-lg mb-2">
-            <button 
-                class="accordion-header w-full text-left px-6 py-4 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-between items-center font-semibold text-lg transition-colors duration-200" 
-                data-section="section7"
-            >
-                <span>Work Experience</span>
-                <svg class="accordion-icon w-5 h-5 transform transition-transform duration-200 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </button>
-            <div class="accordion-content px-6 py-4 hidden" data-section="section7">
-                <div class="flex flex-col gap-6">
-                    {workExperience.map((job) => (
-                            <JobDetails jobData={job}/>
-                    ))}
-                </div>
-            </div>
-        </div>
 
         {/* Accordion Section 8 - Skills & Languages */}
         <div class="accordion-item border border-gray-200 dark:border-gray-700 rounded-lg mb-2">
