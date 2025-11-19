@@ -29,7 +29,7 @@ const allProjects = (await getCollection('projects'))
         <!--Projects List-->
         <section class="flex flex-col gap-8">
             {allProjects.length > 0 ? (
-                allProjects.map((project: Project) => (
+                allProjects.map((project) => (
                         <ProjectCardList
                                 id={project.id}
                                 title={project.data.title}

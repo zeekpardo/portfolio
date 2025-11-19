@@ -18,17 +18,6 @@ interface Prompt {
 const allPrompts = (await getCollection('prompts'))
     .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-// Group prompts by category
-const promptsByCategory = allPrompts.reduce((acc, prompt) => {
-    const category = prompt.data.category;
-    if (!acc[category]) {
-        acc[category] = [];
-    }
-    acc[category].push(prompt);
-    return acc;
-}, {} as Record<string, typeof allPrompts>);
-
-const categories = Object.entries(promptsByCategory);
 ---
 
 <Layout title="Zeek Pardo | AI Prompts" description="A collection of AI prompts used across different projects" scrollSmooth={false}>
@@ -44,7 +33,6 @@ const categories = Object.entries(promptsByCategory);
             {allPrompts.length > 0 ? (
                 allPrompts.map((prompt: Prompt) => (
                     <PromptCard
-                        key={prompt.id}
                         id={prompt.id}
                         title={prompt.data.title}
                         description={prompt.data.description}

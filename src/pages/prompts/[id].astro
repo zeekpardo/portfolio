@@ -19,7 +19,7 @@ const {title, description, category, tags, useCase, publishDate, relatedProjects
 const {Content} = await render(prompt);
 
 // Get related projects if any
-let projects = [];
+let projects: Array<{id: string; data: {title: string; summary: string; tags: string[]}}> = [];
 if (relatedProjects && relatedProjects.length > 0) {
     const allProjects = await getCollection('projects');
     projects = allProjects.filter(project => 
