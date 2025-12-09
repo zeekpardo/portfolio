@@ -43,36 +43,62 @@ interface WorkExperience {
  * @property {boolean} currentJob - A flag indicating if the job is the current one.
  */
 const workExperience:WorkExperience[] = [
-    // {
-    //     title: "Customer Support Agent → Support Operations Specialist Applicant",
-    //     startDate: "2019-12-01",
-    //     company: "Planning Center",
-    //     location: "Remote (Carlsbad, CA)",
-    //     description: "6+ years supporting 50,000+ churches worldwide while building AI systems and automation workflows that solve team-wide challenges. Currently applying for Support Operations Specialist role to formalize my expertise in workflow automation, AI chatbot implementation, and technical training.",
-    //     goals: [
-    //         "Built Spanish Support AI system transforming zero Spanish capacity into full multilingual service coverage",
-    //         "Engineered modular Trust & Safety LLM architecture with 95%+ intent classification accuracy and 40-50% auto-resolution",
-    //         "Created custom report builder enabling team to handle 'technically impossible' HTML/Liquid coding requests",
-    //         "Trained entire support team on AI productivity workflows including ChatGPT systems and automation tools",
-    //         "Developed comprehensive Notion documentation and interactive training reducing team onboarding time",
-    //         "Proposed Front macro integration with n8n webhooks to streamline bug report submission workflow"
-    //     ],
-    //     currentJob: true,
-    // },
-    // {
-    //     title: "Full-Stack Business Systems Architect (Side Business)",
-    //     startDate: "2023-01-01",
-    //     company: "Groovy Marketing",
-    //     location: "Bakersfield, CA (Remote)",
-    //     description: "Building complete business automation systems while maintaining full-time Planning Center role. Specializing in CRM implementation, AI chatbot deployment, and workflow automation for service businesses.",
-    //     goals: [
-    //         "Built and shipped Groovi QR/NFC SaaS platform (groovi.cc) demonstrating full-stack development capabilities",
-    //         "Implemented GoHighLevel CRM automation systems with multi-channel campaigns and intelligent routing",
-    //         "Deployed AI booking chatbots achieving 30-50% conversion increases and 40% reduction in missed leads",
-    //         "Created production websites with conversion optimization and lead capture integration",
-    //         "Developed training materials and troubleshooting guides reducing client support requests 40%"
-    //     ],
-    //     currentJob: true,
-    // }
+    {
+        title: "Support Operations",
+        startDate: "2025-12-15",
+        company: "Planning Center",
+        location: "Remote (Carlsbad, CA)",
+        description: "Leading support operations and workflow optimization for church management platform serving 50,000+ churches worldwide.",
+        goals: [
+            "Optimize support workflows and automation systems",
+            "Implement AI-driven support solutions",
+            "Lead technical training and knowledge management",
+            "Drive operational efficiency improvements"
+        ],
+        currentJob: true,
+    },
+    {
+        title: "Founder",
+        startDate: "2025-09-01",
+        company: "Groovi QR",
+        location: "Bakersfield, CA",
+        description: "Founded SaaS platform for QR code and NFC marketing solutions, serving local businesses with digital engagement tools.",
+        goals: [
+            "Developed and launched groovi.cc platform",
+            "Built automated marketing workflows",
+            "Created customer onboarding and training systems",
+            "Established partnerships with local business networks"
+        ],
+        currentJob: true,
+    },
+    {
+        title: "Founder",
+        startDate: "2024-12-01",
+        company: "Groovi AI Automations",
+        location: "Bakersfield, CA",
+        description: "Providing AI automation solutions and workflow optimization for local businesses, specializing in customer service chatbots and CRM integration.",
+        goals: [
+            "Deployed AI chatbots for local business clients",
+            "Implemented CRM automation systems",
+            "Developed custom business workflow solutions",
+            "Created training materials for AI tool adoption"
+        ],
+        currentJob: true,
+    },
+    {
+        title: "Support Specialist",
+        startDate: "2019-12-01",
+        endDate: "2025-12-01",
+        company: "Planning Center",
+        location: "Remote (Carlsbad, CA)",
+        description: "Provided technical support and customer success services for church management platform, developing expertise in workflow automation and AI systems.",
+        goals: [
+            "Supported 50,000+ churches with technical issues and feature requests",
+            "Built internal automation tools and documentation systems",
+            "Trained team members on new technologies and workflows",
+            "Contributed to product improvement through user feedback analysis"
+        ],
+        currentJob: false,
+    }
 ];
 export default workExperience;

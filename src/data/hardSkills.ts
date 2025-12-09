@@ -6,8 +6,8 @@ interface HardSkill {
 
 const hardSkills: HardSkill[] = [
   {
-    name: "LLM & AI Agent Prompting",
-    description: "Built modular Trust & Safety LLM system with 95%+ accuracy and Spanish support AI",
+    name: "AI Appointment Setting Chatbots",
+    description: "Build and deploy intelligent chatbots that qualify leads, book appointments, and follow up automatically",
     icon: "tools-fill"
   },
   {
@@ -16,8 +16,8 @@ const hardSkills: HardSkill[] = [
     icon: "message-2-fill"
   },
   {
-    name: "Workflow Automation",
-    description: "Expert in Zapier, n8n, webhooks, and API integrations connecting multiple platforms",
+    name: "CRM Integration & Follow-up Sequences",
+    description: "Design automated workflows that update CRM records, trigger follow-up campaigns, and nurture leads through conversion",
     icon: "group-fill"
   },
   {

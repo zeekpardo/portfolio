@@ -1,7 +1,7 @@
 export const SITE = {
-    website: "https://zeekpardo.dev", // Update when deployed
+    website: "https://groovi.pro", // Update when deployed
     title: "Zeek Pardo - Technical Operations Specialist",
-    description: "Full-Stack Business Systems Architect | AI Automation Expert | Planning Center Support Operations",
+    description: "Business Systems Architect | AI Automation Expert | Support Operations",
     tags: ["portfolio", "automation", "AI systems", "full-stack developer"],
     ogImage: "/og-image.webp",
     logo: "logo",
@@ -15,7 +15,7 @@ export const SITE = {
 
 export const ME = {
     name: "Zeek Pardo",
-    profession: "Technical Operations & Automation & AI Systems Specialist",
+    profession: "Technical Operations | Automation | AI Systems Specialist",
     profileImage: "zeek-avatar.png",
     profileFacts: [
         {

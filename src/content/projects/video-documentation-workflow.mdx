@@ -15,7 +15,7 @@ cover: '../../assets/projects/transcript_to_docs.jpg'
 ogImage: './images/training-systems/og-cover.webp'
 ---
 
-# Creating Structured Documentation from Training Videos
+# Early AI Experimentation: Video-to-Documentation Workflow
 
 ## Demo Video
 
@@ -33,182 +33,55 @@ ogImage: './images/training-systems/og-cover.webp'
   </iframe>
 </div>
 
-## The Challenge: Manual Documentation Was Slowing Us Down
+## The Problem: Documentation Bottleneck in Support
 
-Creating comprehensive training documentation from recorded sessions traditionally required:
-- Manual transcription of spoken instructions
-- Screenshot capture and annotation
-- Step-by-step recreation of demonstrated actions
-- Formatting and organization in documentation systems
+**Context:** This was built in early 2024, during my initial exploration of AI for support operations, before having access to purpose-built documentation tools.
 
-This process often took 3-4x longer than the original training session, creating a bottleneck that prevented knowledge sharing and reduced training consistency across the team.
+Creating training documentation from recorded sessions was incredibly time-consuming:
+- **Manual transcription** of spoken instructions
+- **Screenshot capture** and annotation 
+- **Step-by-step recreation** of demonstrated actions
+- **Formatting** and organization in documentation systems
 
-## Solution: AI-Powered Video-to-Documentation Pipeline
+**The bottleneck:** Documentation took **3-4x longer** than the original training session, preventing knowledge sharing and reducing training consistency.
 
-I developed an innovative workflow that combines multiple tools to automatically transform training videos into polished, searchable documentation ready for immediate use.
+## The Solution: DIY AI Documentation Pipeline
 
-### System Architecture
+Since we didn't have access to proper AI-powered documentation tools, I built a creative workaround using available tools:
 
-```
-Live Training Session
-    ↓
-1. ClearShot Screen Recording + Chrome DevTools Recorder
-    ↓
-2. Automatic Transcript Generation
-    ↓
-3. Browser Action JSON Export
-    ↓
-4. AI Processing (Custom GPT)
-    ↓
-5. Structured Notion Documentation
-```
+### How It Worked
 
-## Step-by-Step Implementation
+**1. Dual Recording Setup**
+- **ClearShot**: Screen recording with automatic transcript generation
+- **Chrome DevTools Recorder**: Captured exact browser interactions as JSON
 
-### 1. Dual Recording Setup
+**2. AI Processing** 
+- Fed both transcript and browser JSON into a custom GPT
+- GPT combined "what was said" with "what was actually done"
+- Generated structured Notion documentation ready to paste
 
-**Screen Recording with ClearShot:**
-- Records the visual demonstration with built-in transcript generation
-- Automatically uploads and processes video for transcript extraction
-- Provides timestamped text of all spoken instructions
+**3. Key Innovation: Dual-Source Accuracy**
+- **Transcript** = Intent and context ("why" behind actions)
+- **Browser JSON** = Technical precision (exact steps and elements)
 
-**Browser Action Recording:**
-- Chrome DevTools Recorder captures every user interaction
-- Generates precise JSON logs of clicks, navigation, form inputs
-- Documents exact element selectors and action sequences
+### The Results
 
-### 2. Data Collection Process
-
-**Transcript Extraction:**
-- Access processed video in ClearShot
-- Copy complete transcript using right-click (preserves formatting better than Cmd+C)
-- Captures speaker intent, explanations, and context
-
-**Browser JSON Export:**
-- Export complete user journey from DevTools Recorder
-- Includes precise action timestamps, element targets, and interaction types
-- Provides technical accuracy for complex workflows
-
-### 3. AI Processing Pipeline
-
-**Custom GPT Integration:**
-I built a specialized GPT trained specifically for Planning Center documentation that:
-
-- **Input Processing:** Accepts both transcript and JSON simultaneously
-- **Content Analysis:** Maps spoken instructions to specific technical actions
-- **Structure Generation:** Creates hierarchical documentation with clear headers
-- **Action Enhancement:** Combines "what was said" with "what was done"
-
-**Prompt Engineering:**
-```
-Please reformat this transcript into a Planning Center Support training 
-document ready to copy into Notion. Combine the spoken instructions 
-with the browser actions JSON to create comprehensive step-by-step 
-documentation with no emojis or horizontal lines.
-```
-
-### 4. Output Optimization
-
-The AI generates documentation featuring:
-
-- **Clear Section Headers:** Logical breakdown of training topics
-- **Actionable Steps:** Precise instructions combining intent and execution
-- **Technical Accuracy:** Verified against actual browser interactions
-- **Notion-Ready Formatting:** Optimized for immediate paste and use
-
-## Real-World Application Examples
-
-### Bug Reproduction Documentation
-**Input:** Screen recording of bug discovery + browser actions
-**Output:** Step-by-step reproduction guide for engineering team
-
-**Before:** 45 minutes to manually document a 10-minute bug discovery
+**Before:** 45 minutes to manually document a 10-minute bug discovery  
 **After:** 5 minutes to generate comprehensive reproduction steps
 
-### Feature Training Guides
-**Input:** Live demo of new Planning Center feature + Q&A session
-**Output:** Searchable training document with visual and text components
+- **80% time reduction** in documentation creation
+- **95%+ accuracy** with minimal manual editing required
+- **100% team adoption** for complex procedures
 
-**Result:** New team members can reference exact workflows without rewatching videos
+## Why This Early Experiment Mattered
 
-### Customer Support Escalation Procedures
-**Input:** Complex customer issue resolution walkthrough
-**Output:** Reusable procedure document for similar future cases
+This project represents the kind of **creative problem-solving with early AI tools** that characterized support operations before purpose-built solutions became available:
 
-## Technical Innovation: Dual-Source Accuracy
+- **Identified a real bottleneck** that was preventing knowledge sharing
+- **Combined existing tools creatively** to achieve AI-powered automation
+- **Built something the team actually used** and delivered measurable results
+- **Demonstrated ROI of AI adoption** before enterprise tools were accessible
 
-The breakthrough insight was combining two complementary data sources:
+**The lesson:** Sometimes the best solutions come from experimenting with available tools rather than waiting for the perfect solution to be built for you.
 
-**Transcript = Intent and Context**
-- Explains the "why" behind each action
-- Captures decision-making rationale
-- Provides customer-facing language
-
-**Browser JSON = Precision and Accuracy**
-- Documents exact technical steps
-- Eliminates guesswork about element targeting
-- Ensures reproducible procedures
-
-This dual-source approach produces documentation that's both accurate and contextually rich.
-
-## Business Impact
-
-### Efficiency Gains
-- **Documentation Time:** Reduced from 3-4x video length to ~10% of video length
-- **Accuracy Rate:** 95%+ first-draft accuracy (minimal manual editing required)
-- **Adoption Rate:** 100% team adoption for complex procedure documentation
-
-### Quality Improvements
-- **Consistency:** Standardized documentation format across all training materials
-- **Searchability:** Notion AI can search both video content and text documentation
-- **Maintainability:** Easy updates when procedures change
-
-### Operational Benefits
-- **Knowledge Retention:** Critical procedures captured before team member transitions
-- **Training Scalability:** New team members access comprehensive documentation library
-- **Bug Documentation:** Engineering receives precise, actionable reproduction steps
-
-## Advanced Use Cases
-
-### Multi-Step Process Documentation
-**Complex Workflows:** Custom report building, webhook implementation, API troubleshooting
-**Result:** Complete procedure guides that new team members can follow independently
-
-### Customer Education Materials
-**Self-Service Resources:** Convert internal training into customer-facing documentation
-**Impact:** Reduced support ticket volume for documented procedures
-
-### Cross-Team Knowledge Sharing
-**Engineering Handoffs:** Translate support discoveries into development-ready specifications
-**Collaboration:** Bridge communication gaps between technical and non-technical teams
-
-## Implementation Guidelines
-
-### For Maximum Effectiveness:
-1. **Prepare Recording Environment:** Close unnecessary browser tabs, organize workspace
-2. **Speak Clearly:** Explain reasoning behind actions, not just the actions themselves
-3. **Use Consistent Naming:** Reference UI elements consistently throughout recording
-4. **Include Context:** Mention why specific approaches are chosen over alternatives
-
-### Quality Assurance Process:
-1. **Review AI Output:** Verify technical accuracy against original recording
-2. **Test Procedures:** Have team member follow generated documentation
-3. **Iterate Prompts:** Refine AI instructions based on output quality
-4. **Update Templates:** Improve documentation format based on team feedback
-
-## Why This System Works for Support Operations
-
-This workflow exemplifies the kind of intelligent automation that transforms support operations:
-
-**Problem Recognition:** Identified that documentation creation was a bottleneck preventing knowledge sharing
-**Creative Solution:** Combined existing tools in novel ways to automate manual processes
-**Practical Implementation:** Built reliable system that team members actually use
-**Measurable Impact:** Quantifiable improvements in efficiency and documentation quality
-
-The Video-to-Documentation Workflow demonstrates how thoughtful tool integration can eliminate repetitive work while improving output quality.
-
-**This project showcases:**
-- **Process Innovation:** Novel combination of existing tools for maximum efficiency
-- **AI Integration:** Practical application of AI for business process improvement
-- **Team Enablement:** Creating systems that make everyone more effective
-- **Documentation Excellence:** Transforming knowledge capture from burden to automatic outcome
+This workflow later influenced how we approached AI integration across other support processes and validated the value of investing in proper documentation tooling.

@@ -127,9 +127,9 @@ table explaining the properties of each object:
 
 ```typescript
 export const SITE = {
-    website: "https://vicbox.dev/projects/simple-portfolio", // replace this with your deployed domain
-    title: "Simple Portfolio",
-    description: "A simple but beautiful portfolio created with Astro",
+    website: "https://groovi.pro", // replace this with your deployed domain
+    title: "Zeek Pardo's Portfolio",
+    description: "A simple Fortfolio of Zeek Pardo's work",
     tags: ["portfolio", "Resume cv", "Astro"],
     ogImage: "/og-image.webp",
     logo: "logo",
@@ -137,8 +137,8 @@ export const SITE = {
     lang: "en",
     favicon: "/favicon.png",
     repository: "https://github.com/vito8916/simple-portfolio.git",
-    author: "Victor Alvarado",
-    profile: "https://victoralvarado.dev/",
+    author: "zeekpardo",
+    profile: "https://groovi.pro",
 }
 ````
 

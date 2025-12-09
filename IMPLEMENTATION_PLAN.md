@@ -27,7 +27,7 @@ export const SITE = {
 
 export const ME = {
     name: "Zeek Pardo",
-    profession: "Technical Operations & Automation Specialist | AI Systems Architect",
+    profession: "Technical Operations | Automation Specialist | AI Systems",
     profileImage: "zeek-avatar.png", // New image needed
     profileFacts: [
         {
@@ -235,7 +235,7 @@ const softSkills = [
 ```typescript
 const workExperience = [
     {
-        title: "Technical Operations & Automation Specialist",
+        title: "Automation Specialist",
         startDate: "2019-12-01",
         endDate: "",
         company: "Planning Center",
