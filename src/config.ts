@@ -1,7 +1,7 @@
 export const SITE = {
     website: "https://zeekpardo.com", // Update when deployed
-    title: "Zeek Pardo - AI Operations Engineer",
-    description: "AI Operations Engineer | Support Systems Architect | AI Agent Builder",
+    title: "Zeek Pardo - AI Automation & Operations Specialist",
+    description: "AI Automation & Operations Specialist | Support Systems Architect | AI Agent Builder",
     tags: ["portfolio", "AI operations", "AI agent systems", "support engineering", "AI-assisted development"],
     ogImage: "/og-image.webp",
     logo: "logo",
@@ -15,7 +15,7 @@ export const SITE = {
 
 export const ME = {
     name: "Zeek Pardo",
-    profession: "AI Operations Engineer",
+    profession: "AI Automation & Operations Specialist",
     profileImage: "zeek-avatar.png",
     profileFacts: [
         {
