@@ -34,7 +34,7 @@ export const ME = {
     contactInfo: {
         email: "zeekpardo@gmail.com",
         linkedin: "https://www.linkedin.com/in/zeekpardo",
-        resumeDoc: "resume.pdf",
+        resumeDoc: "resume.html",
     },
     aboutMe: "I architect AI agent systems that scale support operations. For 6 years I've operated inside a complex SaaS ecosystem of 13 interconnected products serving 4 million+ users, building AI agents, knowledge architectures, and automation workflows that turned a team of humans into a hybrid human+AI operation. I design the systems that make AI support actually work: knowledge bases optimized for AI consumption, intelligent escalation logic, conversation design, and performance monitoring loops that continuously improve resolution rates. My edge: I've handled the tickets, felt the friction, and built every system from the front line.",
 }
