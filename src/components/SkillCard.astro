@@ -2,11 +2,17 @@
 // component imports
 import {Icon} from "astro-icon/components";
 
+interface RelatedProject {
+    name: string;
+    slug: string;
+}
+
 interface SkillCardProps {
     icon: string;
     name: string;
     description: string;
     showDescription?: boolean;
+    relatedProjects?: RelatedProject[];
 }
 
 const {
@@ -14,6 +20,7 @@ const {
     name,
     description,
     showDescription = true,
+    relatedProjects = [],
 } = Astro.props as SkillCardProps;
 
 ---
@@ -25,5 +32,19 @@ const {
     <h3 class="text-lg font-bold">{name}</h3>
     {
         showDescription && <p class="text-n700 dark:text-n200">{description}</p>
+    }
+    {
+        relatedProjects && relatedProjects.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mt-1">
+                {relatedProjects.map((project) => (
+                    <a
+                        href={`/projects/${project.slug}`}
+                        class="text-xs px-2 py-0.5 rounded-full bg-primary-light/20 dark:bg-primary-dark/10 text-n800 dark:text-primary-dark hover:bg-primary-light/30 dark:hover:bg-primary-dark/20 transition-colors"
+                    >
+                        {project.name}
+                    </a>
+                ))}
+            </div>
+        )
     }
 </div>

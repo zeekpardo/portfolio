@@ -1,0 +1,112 @@
+---
+title: Launch Club - Nonprofit Youth Program Platform
+summary: Architected and built a bilingual group management platform for Launch Club International, a 501(c)(3) nonprofit serving vulnerable youth across the Philippines and Honduras. Built entirely with Claude Code.
+tags:
+    - Built with Claude Code
+    - Full-Stack Platform
+    - Nonprofit Tech
+    - Bilingual (EN/ES)
+    - Supabase
+startDate: 2025-12-01
+endDate: 2026-03-01
+author: Zeek Pardo
+url: https://launchthem.org
+cover: './images/launch-club/cover.webp'
+---
+
+## Project Overview
+
+**Launch Club International** is a 501(c)(3) nonprofit that launches vulnerable children into productive, faith-filled lives through education support, career preparation, and spiritual guidance — operating across the Philippines and Honduras.
+
+They needed software to manage their growing operation: sites, groups, students, mentors, guardians, attendance, events, and applications. Nothing on the market fit their multi-country, multi-site, bilingual needs.
+
+I architected, designed, and built the entire platform using **Claude Code**.
+
+---
+
+## The Mission
+
+Launch Club operates on three pillars:
+
+1. **Education Support** — Group tutoring through high school, academic improvement, teamwork
+2. **Career Preparation** — Career exploration, workplace readiness skills
+3. **Spiritual Guidance** — Weekly gatherings, church partnerships, character development
+
+The software needed to reflect this structure while being usable by mentors and leaders with varying levels of technical experience, in both English and Spanish.
+
+---
+
+## What We Built
+
+### Multi-Site Hierarchy
+
+The platform mirrors Launch Club's real-world structure:
+
+**Countries → Sites → Groups → People**
+
+Each level has its own leaders, data, and permissions. A country leader in the Philippines sees only Philippine sites. A site leader sees only their groups. Data isolation is enforced at the database level.
+
+### 4-Tier Role System
+
+- **Master Admin** — Full platform access
+- **Country Leader** — Manages all sites within their country
+- **Site Leader** — Manages groups and mentors at their site
+- **Mentor** — Tracks attendance and engages with students in their group
+
+### Bilingual Public Application Form
+
+Parents apply for their children through a public-facing form available in both English and Spanish, powered by i18next. Applications flow into the admin dashboard for review.
+
+### Attendance Tracking & Reporting
+
+Mentors log attendance per session. The dashboard surfaces trends — which groups are growing, which need attention, demographics breakdowns, and attendance patterns over time.
+
+### Events Management
+
+Supports multiple event types: regular sessions, guest speakers, and family site visits. Each event ties to attendance records and group history.
+
+### People Directory
+
+Unified records for adults and children with household grouping, profile photos, and group assignments. No more spreadsheets.
+
+### Purchase Request Workflow
+
+Site leaders submit purchase requests that flow through an approval chain — keeping financial accountability built into the system.
+
+### Dashboard & Analytics
+
+Real-time statistics, demographic breakdowns, and attendance trend visualization give leadership visibility into program health across all countries and sites.
+
+---
+
+## Technical Architecture
+
+- **Frontend:** React 18, Vite, TypeScript, Tailwind CSS, shadcn/ui
+- **Backend:** Supabase (PostgreSQL) with Row-Level Security (RLS)
+- **Server Functions:** Edge Functions (Deno) for admin operations
+- **Internationalization:** i18next for full bilingual support (EN/ES)
+- **Auth:** Closed system — only master admins create user accounts
+- **Storage:** Supabase buckets for profile photos, group images, and application files
+
+### Database Design
+
+- `countries` → `sites` → `groups` → `events` → `attendance`
+- Unified `people` table (adults + children) with `person_groups` junction
+- `applications` + `application_children` for parent intake flow
+- `profiles`, `user_roles`, `user_countries`, `user_sites` for auth and permissions
+- Row-Level Security ensures complete data isolation between countries and sites
+
+---
+
+## Built With Claude Code
+
+The entire platform — from database schema design to UI components to Edge Functions — was built using Claude Code. This project demonstrated how AI-assisted development can deliver production-quality software for organizations with complex operational needs.
+
+---
+
+## Impact
+
+- **Multi-country deployment** across Philippines and Honduras
+- **7 church site locations** with 12 mentors onboarded
+- **Bilingual access** enabling Spanish-speaking families to apply and participate
+- **Operational visibility** replacing spreadsheets and manual tracking with real-time dashboards

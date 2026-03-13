@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { title, summary, tags, cover, ogImage, url } = post.data;
+const { title, summary, tags, cover, ogImage, url, demoVideo } = post.data;
 
 const { Content } = await render(post);
 
@@ -30,10 +30,49 @@ const { Content } = await render(post);
             <p class="text-sm text-n500 dark:text-primary-light ">
                 {tags.join(', ')}
             </p>
+            {url && (
+                <a href={url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-blue-600 dark:text-blue-400 border border-blue-600 dark:border-blue-400 rounded-lg hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-4.5-6H21m0 0v7.5m0-7.5L10.5 13.5"/></svg>
+                    Visit Project
+                </a>
+            )}
         </div>
         {cover && (
-            <Image transition:name={`${post.id}-image`} class="rounded-2xl" src={cover} alt="Main project image"/>
+            <div class="relative">
+                <Image transition:name={`${post.id}-image`} class="rounded-2xl" src={cover} alt="Main project image"/>
+                {demoVideo && (
+                    <button
+                        id="open-video"
+                        class="absolute bottom-4 right-4 flex items-center gap-2 px-4 py-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-gray-900 dark:text-white rounded-lg shadow-lg hover:bg-white dark:hover:bg-gray-800 transition-all font-medium text-sm"
+                    >
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        Watch Demo
+                    </button>
+                )}
+            </div>
         )}
+
+        {demoVideo && (
+            <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+                <div class="relative w-full max-w-4xl mx-4">
+                    <button id="close-video" class="absolute -top-10 right-0 text-white hover:text-gray-300 text-3xl font-light">&times;</button>
+                    <div class="relative w-full" style="padding-bottom: 56.25%;">
+                        <iframe
+                            id="video-iframe"
+                            class="absolute inset-0 w-full h-full rounded-xl"
+                            src=""
+                            data-src={`https://www.youtube.com/embed/${demoVideo}?si=AVMboSP828atj1c5&autoplay=1`}
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        )}
+
         <p>
             {summary}
         </p>
@@ -44,6 +83,35 @@ const { Content } = await render(post);
         <BackToTop />
     </>
 </Layout>
+
+<script>
+    const openBtn = document.getElementById('open-video');
+    const closeBtn = document.getElementById('close-video');
+    const modal = document.getElementById('video-modal');
+    const iframe = document.getElementById('video-iframe') as HTMLIFrameElement | null;
+
+    if (openBtn && modal && iframe) {
+        openBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            iframe.src = iframe.dataset.src || '';
+        });
+
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            iframe.src = '';
+        };
+
+        closeBtn?.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+    }
+</script>
 
 <style is:global>
     h2 {

@@ -44,21 +44,52 @@ interface WorkExperience {
  */
 const workExperience:WorkExperience[] = [
     {
-        title: "Support Operations",
+        title: "Support Operations Specialist",
         startDate: "2025-12-15",
         company: "Planning Center",
         location: "Remote (Carlsbad, CA)",
-        description: "Leading support operations and workflow optimization for church management platform serving 50,000+ churches worldwide.",
+        description: "Own AI operations, automation systems, and support tooling for a SaaS platform serving 4 million+ users. Architect hybrid human+AI workflows across Front (current) and Zendesk (6 years prior). Build internal tools and AI agent systems that scale team performance.",
         goals: [
-            "Optimize support workflows and automation systems",
-            "Implement AI-driven support solutions",
-            "Lead technical training and knowledge management",
-            "Drive operational efficiency improvements"
+            "Built custom Front Composer Plugin that restored template search velocity for 40+ agents after platform migration",
+            "Implement, monitor, and optimize Front's AI agent products across the support organization",
+            "Completed Intercom Fin AI Academy and built proof-of-concept automation workflows while evaluating AI support platforms",
+            "Design automation workflows that reduced manual processes by 40% across support operations",
+            "Track automation metrics and translate findings into system improvements that expand AI coverage"
         ],
         currentJob: true,
     },
     {
-        title: "Founder",
+        title: "Support Specialist",
+        startDate: "2022-06-01",
+        endDate: "2025-12-15",
+        company: "Planning Center",
+        location: "Remote (Carlsbad, CA)",
+        description: "Built AI agent systems and knowledge architecture for a 13-product SaaS platform in Zendesk. Designed multilingual AI workflows, automated reporting tools, and training systems that transformed team capabilities.",
+        goals: [
+            "Built AI-powered Spanish support system that cut response time from 2-3 days to same-day with 100% team adoption and zero additional hiring",
+            "Created AI custom report builder enabling non-technical users to generate complex Liquid template reports via natural language",
+            "Designed and maintained knowledge base architecture across 13 products in Zendesk Guide, optimized for search and AI consumption",
+            "Led technical training and AI enablement sessions across the support organization"
+        ],
+        currentJob: false,
+    },
+    {
+        title: "Support Agent",
+        startDate: "2019-12-01",
+        endDate: "2022-06-01",
+        company: "Planning Center",
+        location: "Remote (Carlsbad, CA)",
+        description: "Front-line technical support in Zendesk across all 13 Planning Center products. Built the deep product knowledge and customer empathy that later informed every AI system and automation I designed.",
+        goals: [
+            "Supported 4 million+ users and developed the front-line operational insight that drives every system I build",
+            "Mastered the full product ecosystem: Check-Ins, Giving, Groups, People, API, and 8 more interconnected products",
+            "Identified recurring friction points that became the foundation for AI automation initiatives",
+            "Built help center content and knowledge base articles optimized for search and self-service resolution"
+        ],
+        currentJob: false,
+    },
+    {
+        title: "Product Manager",
         startDate: "2025-09-01",
         company: "Groovi QR",
         location: "Bakersfield, CA",
@@ -72,33 +103,18 @@ const workExperience:WorkExperience[] = [
         currentJob: true,
     },
     {
-        title: "Founder",
+        title: "Product Manager",
         startDate: "2024-12-01",
         company: "Groovi AI Automations",
         location: "Bakersfield, CA",
-        description: "Providing AI automation solutions and workflow optimization for local businesses, specializing in customer service chatbots and CRM integration.",
+        description: "Design and deploy AI agent systems and workflow automation for businesses. Conversational AI, CRM integration, and support automation.",
         goals: [
-            "Deployed AI chatbots for local business clients",
-            "Implemented CRM automation systems",
-            "Developed custom business workflow solutions",
-            "Created training materials for AI tool adoption"
+            "Deployed conversational AI agents for business clients across multiple channels",
+            "Architected CRM automation systems with intelligent routing and escalation",
+            "Built custom AI-powered workflow solutions for customer operations",
+            "Created training and enablement materials for AI tool adoption"
         ],
         currentJob: true,
     },
-    {
-        title: "Support Specialist",
-        startDate: "2019-12-01",
-        endDate: "2025-12-01",
-        company: "Planning Center",
-        location: "Remote (Carlsbad, CA)",
-        description: "Provided technical support and customer success services for church management platform, developing expertise in workflow automation and AI systems.",
-        goals: [
-            "Supported 50,000+ churches with technical issues and feature requests",
-            "Built internal automation tools and documentation systems",
-            "Trained team members on new technologies and workflows",
-            "Contributed to product improvement through user feedback analysis"
-        ],
-        currentJob: false,
-    }
 ];
 export default workExperience;

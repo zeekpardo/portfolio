@@ -1,39 +1,72 @@
+interface RelatedProject {
+  name: string;
+  slug: string;
+}
+
 interface HardSkill {
   name: string;
   description: string;
   icon: string;
+  relatedProjects?: RelatedProject[];
 }
 
 const hardSkills: HardSkill[] = [
   {
-    name: "AI Appointment Setting Chatbots",
-    description: "Build and deploy intelligent chatbots that qualify leads, book appointments, and follow up automatically",
-    icon: "tools-fill"
+    name: "AI Agent Operations",
+    description: "Build, train, and optimize AI support agents. Intercom Fin AI Academy certified. Design conversation flows, escalation logic, and performance loops that drive resolution rates",
+    icon: "group-fill",
+    relatedProjects: [
+      { name: "Spanish Support AI", slug: "spanish-support-ai-system" },
+      { name: "AI Custom Report Builder", slug: "ai-custom-report-builder" },
+      { name: "AI Grant Coach", slug: "ai-grant-application-coach" },
+    ]
   },
   {
-    name: "Helpdesk Software",
-    description: "6+ years using macros, rules, and advanced features for customer support",
-    icon: "message-2-fill"
+    name: "Support Automation & Workflows",
+    description: "6 years across Zendesk, Front, and Intercom. Build custom integrations, intelligent routing, and automation workflows across support platforms",
+    icon: "message-2-fill",
+    relatedProjects: [
+      { name: "Front Composer Plugin", slug: "front-composer-plugin" },
+      { name: "Spanish Support AI", slug: "spanish-support-ai-system" },
+    ]
   },
   {
-    name: "CRM Integration & Follow-up Sequences",
-    description: "Design automated workflows that update CRM records, trigger follow-up campaigns, and nurture leads through conversion",
-    icon: "group-fill"
+    name: "Knowledge Architecture",
+    description: "Structure and optimize knowledge bases for both human agents and AI consumption. Search optimization, content design, and help center management",
+    icon: "tools-fill",
+    relatedProjects: [
+      { name: "Technical Training Systems", slug: "technical-training-systems" },
+      { name: "Video Documentation", slug: "video-documentation-workflow" },
+    ]
   },
   {
-    name: "Technical Training & Documentation",
-    description: "Created comprehensive Notion training materials and interactive tools for team adoption",
-    icon: "time-fill"
+    name: "Prompt Engineering & Conversation Design",
+    description: "Design, test, and refine production AI prompts. Modular prompt architecture, terminology guardrails, and multi-language conversation flows",
+    icon: "time-fill",
+    relatedProjects: [
+      { name: "Spanish Support AI", slug: "spanish-support-ai-system" },
+      { name: "AI Grant Coach", slug: "ai-grant-application-coach" },
+    ]
   },
   {
-    name: "HTML/CSS & Web Development",
-    description: "Built custom report builder and full-stack SaaS platforms including Groovi (groovi.cc)",
-    icon: "astro_dark"
+    name: "AI-Assisted Development",
+    description: "Ship production software using Claude Code. Multi-agent orchestration to parallel execution pipelines",
+    icon: "code-s-fill",
+    relatedProjects: [
+      { name: "MakerVault", slug: "maker-vault" },
+      { name: "Front Composer Plugin", slug: "front-composer-plugin" },
+      { name: "Launch Club", slug: "launch-club" },
+    ]
   },
   {
-    name: "Data Analysis & Reporting",
-    description: "Support metrics analysis, visualization creation, and identifying patterns in customer data",
-    icon: "mongodb"
+    name: "Full-Stack Development",
+    description: "React, TypeScript, Next.js, Supabase, Tailwind, Tauri. SaaS platforms, desktop apps, and internal tools",
+    icon: "github-fill",
+    relatedProjects: [
+      { name: "Groovi QR Platform", slug: "groovi-qr-platform" },
+      { name: "MakerVault", slug: "maker-vault" },
+      { name: "Launch Club", slug: "launch-club" },
+    ]
   }
 ];
 

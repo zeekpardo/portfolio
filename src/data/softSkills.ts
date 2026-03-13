@@ -5,27 +5,27 @@ interface SoftSkill {
 
 const softSkills: SoftSkill[] = [
     {
-        name: "Independent Problem-Solving",
+        name: "Front-Line Operational Insight",
         icon: "tools-fill"
     },
     {
-        name: "Technical Training & Documentation",
-        icon: "time-fill"
-    },
-    {
-        name: "Learning Agility",
-        icon: "group-fill"
-    },
-    {
-        name: "System Thinking",
+        name: "Systems Thinking & Architecture",
         icon: "message-2-fill"
     },
     {
-        name: "Collaborative Building",
+        name: "Rapid Execution & Shipping",
+        icon: "time-fill"
+    },
+    {
+        name: "Cross-Functional Collaboration",
+        icon: "group-fill"
+    },
+    {
+        name: "AI Agent Training & Enablement",
         icon: "github-fill"
     },
     {
-        name: "Customer Impact Focus",
+        name: "Customer Empathy & Outcome Focus",
         icon: "time-line"
     }
 ];

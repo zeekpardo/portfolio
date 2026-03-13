@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeek Pardo - Resume</title>
+    <style>
+        /* ATS-safe: single column, no tables, no graphics, standard fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: 8.5in 11in;
+            margin: 0;
+        }
+
+        body {
+            font-family: Calibri, Arial, Helvetica, sans-serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: white;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            padding: 0.6in 0.7in;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* Header / Name */
+        .name {
+            font-size: 22pt;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: 0.02em;
+            margin-bottom: 2pt;
+        }
+
+        .contact {
+            font-size: 10pt;
+            color: #333;
+            margin-bottom: 12pt;
+            line-height: 1.5;
+        }
+
+        .contact a {
+            color: #1a5fb4;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: #999;
+            margin: 0 4pt;
+        }
+
+        /* Section headings */
+        h2 {
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #111;
+            border-bottom: 1.5pt solid #333;
+            padding-bottom: 2pt;
+            margin-top: 12pt;
+            margin-bottom: 6pt;
+            letter-spacing: 0.06em;
+        }
+
+        /* Job entries */
+        .job {
+            margin-bottom: 10pt;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1pt;
+        }
+
+        .job-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .job-date {
+            font-size: 10pt;
+            color: #444;
+            white-space: nowrap;
+        }
+
+        .job-company {
+            font-size: 10.5pt;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 3pt;
+        }
+
+        /* Bullet points */
+        ul {
+            padding-left: 16pt;
+            margin-bottom: 2pt;
+        }
+
+        li {
+            font-size: 10.5pt;
+            margin-bottom: 2pt;
+            line-height: 1.35;
+            color: #222;
+        }
+
+        /* Skills */
+        .skills-grid {
+            margin-bottom: 2pt;
+        }
+
+        .skill-row {
+            margin-bottom: 3pt;
+            font-size: 10.5pt;
+            line-height: 1.4;
+        }
+
+        .skill-label {
+            font-weight: 700;
+            color: #111;
+        }
+
+        /* Professional Summary */
+        .summary {
+            font-size: 10.5pt;
+            line-height: 1.45;
+            color: #222;
+            margin-bottom: 4pt;
+        }
+
+        /* Projects section */
+        .project {
+            margin-bottom: 8pt;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .project-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .project-date {
+            font-size: 10pt;
+            color: #444;
+            white-space: nowrap;
+        }
+
+        .project-sub {
+            font-size: 10pt;
+            color: #444;
+            font-style: italic;
+            margin-bottom: 2pt;
+        }
+
+        /* Languages */
+        .lang-list {
+            font-size: 10.5pt;
+            color: #222;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                padding: 0.5in 0.65in;
+                min-height: auto;
+            }
+            a {
+                color: #333 !important;
+            }
+        }
+
+
+        /* Screen preview */
+        @media screen {
+            body {
+                background: #e5e5e5;
+                padding: 20px 0;
+            }
+            .page {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- CONTACT INFORMATION - in body, not header/footer for ATS -->
+        <div class="name">Zeek Pardo</div>
+        <div class="contact" style="display: flex; justify-content: space-between; align-items: baseline;">
+            <div>
+                <a href="mailto:zeekpardo@gmail.com">zeekpardo@gmail.com</a>
+                <span class="separator">|</span>
+                <a href="https://www.linkedin.com/in/zeekpardo">linkedin.com/in/zeekpardo</a>
+                <span class="separator">|</span>
+                <a href="https://github.com/zeekpardo">github.com/zeekpardo</a>
+            </div>
+            <a href="https://zeekpardo.com" style="background: #1a5fb4; color: white; padding: 3pt 10pt; border-radius: 3pt; text-decoration: none; font-weight: 600; font-size: 9pt; letter-spacing: 0.03em;">View Full Portfolio</a>
+        </div>
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <h2>Professional Summary</h2>
+        <p class="summary">
+            AI Automation and Operations Specialist with 6 years of experience inside a complex SaaS ecosystem of 13 interconnected products serving 4 million+ users. Built 15 AI systems and shipped 5 products to production, including a desktop application built in 72 hours with 18,550 lines of code and zero architectural rewrites. Bilingual (English/Spanish). Combines deep front-line operations expertise with AI-assisted development to eliminate friction, scale team capabilities, and ship production software at startup speed.
+        </p>
+
+        <!-- SKILLS -->
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-row">
+                <span class="skill-label">AI & Automation:</span> Claude Code, Custom GPTs, LLM Integration, Conversational AI, Prompt Engineering, AI-Assisted Development, Parallel Agent Architecture, Workflow Automation
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Frontend:</span> React, TypeScript, Next.js, Tailwind CSS, Vite, shadcn/ui, Zustand, HTML/CSS
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Backend & Data:</span> Node.js, Rust, Python, PostgreSQL, SQLite, Supabase, RESTful APIs, Edge Functions (Deno)
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Desktop & Infrastructure:</span> Tauri v2, Vercel, AWS, GitHub CI/CD, Clerk Auth, Row-Level Security (RLS)
+            </div>
+            <div class="skill-row">
+                <span class="skill-label">Operations:</span> Support Operations, Technical Training, Documentation Systems, Process Automation, Cross-Functional Collaboration, Systems Thinking
+            </div>
+        </div>
+
+        <!-- WORK EXPERIENCE -->
+        <h2>Work Experience</h2>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Support Operations Specialist</span>
+                <span class="job-date">12/2025 - Present</span>
+            </div>
+            <div class="job-company">Planning Center - Remote (Carlsbad, CA) | SaaS platform serving 4M+ users</div>
+            <ul>
+                <li>Built custom Front Composer Plugin with Claude Code to eliminate template search friction after a 15-year platform migration, restoring velocity for 40+ CX agents across 13 product categories</li>
+                <li>Architected AI-powered automation workflows that reduced documentation time by 80% and achieved 100% team adoption across the support organization</li>
+                <li>Designed and deployed Spanish Support AI system using Custom GPT with 150+ specialized term mappings, transforming zero Spanish capacity into same-day response times without additional hiring</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Support Specialist</span>
+                <span class="job-date">06/2022 - 12/2025</span>
+            </div>
+            <div class="job-company">Planning Center - Remote (Carlsbad, CA)</div>
+            <ul>
+                <li>Created AI Custom Report Builder that converts natural-language requests into working Liquid template code, reducing report generation from hours to minutes with 100% code accuracy</li>
+                <li>Developed video-to-documentation AI pipeline combining screen recording transcription with browser DevTools JSON, cutting documentation creation time by 80% with 95%+ accuracy</li>
+                <li>Led technical training programs achieving 60% faster onboarding, 100% AI tool adoption, and elimination of "technically impossible" customer responses</li>
+                <li>Built AI Grant Application Coach via WhatsApp supporting 11 languages across multiple continents, replacing 11 separate Google Forms with a single conversational system</li>
+            </ul>
+        </div>
+
+        <div style="page-break-before: always; padding-top: 0.5in;"></div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Support Agent</span>
+                <span class="job-date">12/2019 - 06/2022</span>
+            </div>
+            <div class="job-company">Planning Center - Remote (Carlsbad, CA)</div>
+            <ul>
+                <li>Provided front-line technical support across all 13 Planning Center products (Check-Ins, Giving, Groups, Calendar, API, and 8 others), developing deep cross-product expertise</li>
+                <li>Identified recurring operational friction points that became the foundation for 15 automation and AI system builds</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Product Manager</span>
+                <span class="job-date">09/2024 - Present</span>
+            </div>
+            <div class="job-company">Groovi QR & Groovi AI Automations - Bakersfield, CA</div>
+            <ul>
+                <li>Designed and launched Groovi QR (groovi.cc), a multi-tenant SaaS platform for dynamic QR code and NFC marketing, deployed across 50+ store locations and 25+ restaurant tables</li>
+                <li>Built full-stack platform using Next.js, PostgreSQL, and Clerk with smart scheduling, campaign switching, real-time analytics, and role-based team collaboration</li>
+            </ul>
+        </div>
+
+        <!-- KEY PROJECTS -->
+        <h2>Key Projects</h2>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">MakerVault - Desktop File Organizer for Makers</span>
+                <span class="project-date">03/2026</span>
+            </div>
+            <div class="project-sub">Tauri v2, Rust, React, TypeScript, SQLite | makervaultapp.com</div>
+            <ul>
+                <li>Shipped production desktop application in 72 hours: 49 commits, 18,550 lines of code, 235 files, zero architectural rewrites using the "Zero-Refactor Principle" planning methodology</li>
+                <li>Coordinated 9 parallel Claude Code agents achieving 33 commits in a single day with zero merge conflicts and zero broken builds</li>
+                <li>Engineered instant full-text search across 50,000+ files in under 30ms using SQLite FTS5 indexing with support for 25+ file types (SVG, DXF, STL, LightBurn, G-code)</li>
+            </ul>
+        </div>
+
+        <div class="project">
+            <div class="project-header">
+                <span class="project-title">Launch Club - Nonprofit Youth Platform</span>
+                <span class="project-date">12/2025 - 03/2026</span>
+            </div>
+            <div class="project-sub">React, TypeScript, Supabase, i18next | launchthem.org</div>
+            <ul>
+                <li>Architected bilingual (EN/ES) group management platform for 501(c)(3) nonprofit serving vulnerable youth across the Philippines and Honduras with 7 church sites and 12 mentors</li>
+                <li>Implemented multi-site hierarchy with 4-tier role system, Row-Level Security, attendance tracking, and purchase request workflows using Supabase Edge Functions</li>
+            </ul>
+        </div>
+
+        <!-- PUBLICATIONS -->
+        <h2>Publications</h2>
+        <ul>
+            <li>"The 48-Hour Product Playbook: How I Ship Production Software in a Weekend" - 7-phase framework with 23 AI prompts for rapid product development (12/2025)</li>
+            <li>"How 9 AI Agents Shipped 18,000 Lines of Code in 72 Hours" - Parallel agent architecture for AI-assisted development (02/2026)</li>
+            <li>"The Future of Customer Support Is Agent-First, Not AI-First" - Agent-First AI strategy with self-improving knowledge loops (11/2025)</li>
+        </ul>
+
+        <!-- LANGUAGES -->
+        <h2>Languages</h2>
+        <div class="lang-list">
+            English (Native) <span class="separator">|</span>
+            Spanish (Native) <span class="separator">|</span>
+            Italian (B2) <span class="separator">|</span>
+            French (B1)
+        </div>
+    </div>
+</body>
+</html>

@@ -66,23 +66,7 @@ if (relatedProjects && relatedProjects.length > 0) {
             </div>
         </div>
 
-        <!-- Prompt Code Block -->
-        <div class="mt-8">
-            <h2 class="text-xl font-semibold mb-4">Prompt</h2>
-            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                <pre class="text-green-400 text-sm whitespace-pre-wrap"><code>{prompt.data.prompt}</code></pre>
-            </div>
-            <div class="mt-2 flex justify-end">
-                <button 
-                    onclick="navigator.clipboard.writeText(this.previousElementSibling.querySelector('code').textContent)"
-                    class="text-xs px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
-                >
-                    Copy Prompt
-                </button>
-            </div>
-        </div>
-
-        <!-- Content (additional details, context, examples) -->
+        <!-- Content -->
         <article id="article" class="mt-8 prose dark:prose-invert max-w-none">
             <Content/>
         </article>
@@ -116,19 +100,3 @@ if (relatedProjects && relatedProjects.length > 0) {
     </>
 </Layout>
 
-<script>
-    // Copy functionality for the prompt
-    document.addEventListener('DOMContentLoaded', () => {
-        const copyButton = document.querySelector('[onclick*="clipboard"]');
-        if (copyButton) {
-            copyButton.addEventListener('click', () => {
-                // Temporarily change button text to show feedback
-                const originalText = copyButton.textContent;
-                copyButton.textContent = 'Copied!';
-                setTimeout(() => {
-                    copyButton.textContent = originalText;
-                }, 2000);
-            });
-        }
-    });
-</script>

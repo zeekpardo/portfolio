@@ -1,0 +1,130 @@
+---
+title: Custom Front Composer Plugin - Restoring Team Velocity
+summary: Built a custom Front Composer Plugin with Claude Code to eliminate template search friction after a 15-year platform migration, reducing cognitive load and restoring CX team momentum across 13+ product categories.
+tags:
+    - Built with Claude Code
+    - Support Operations
+    - Front Plugin
+    - Developer Tools
+    - CX Operations
+startDate: 2026-01-15
+endDate: 2026-02-25
+author: Zeek Pardo
+url: https://www.linkedin.com/in/zeekpardo
+cover: './images/front-composer-plugin/cover.webp'
+---
+
+## The Context
+
+At the beginning of 2026, I stepped into a new role as a Support Operations Specialist. The timing was significant: after 6 years personally working in **Zendesk** (and the team's 15-year history on the platform), we had just migrated roughly 40 teammates (agents, specialists, and managers) to **Front**.
+
+Large migrations always come with friction: new workflows, new rules, new automations. Subtle behavioral shifts and muscle memory that no longer applies change the daily workflow of CX agents.
+
+My primary goal was clear: **optimize the new system so our team could operate at full velocity again.**
+
+This is the first of three major projects related to this transition, and the one I'm most proud of so far.
+
+---
+
+## Where the Friction Appeared
+
+One issue surfaced quickly: **message template search**.
+
+We rely heavily on message templates, supporting **13 core products** plus privacy, security, marketing, API, customer success, and internal support categories. Templates are essential to delivering consistent, fast, high-quality responses.
+
+In our previous system, searching for a template was predictable — type a keyword and narrow down to one or two results, often exactly the one you needed.
+
+In Front's native template widget, the same search might return **90+ results**. Technically functional. Practically inefficient.
+
+Multiply that by hundreds of tickets per day, and **flow disappears**.
+
+Agents who were once heavy hitters saw noticeable drops in output. When predictability disappears, momentum drops. Small delays stack up, micro-frictions accumulate, and team morale feels it.
+
+---
+
+## The Decision: Don't Recreate — Improve
+
+I didn't want to recreate our old system. I wanted to build something **better**.
+
+Having spent six years as a support agent answering tickets myself, I knew exactly how our team thinks, searches, and applies templates in real conversations.
+
+So I built a **Front Composer Plugin** using Claude Code, designed specifically around how our CX team actually works.
+
+---
+
+## What We Built
+
+### 1. Automatic Product Filtering
+
+Our team had already done excellent work organizing templates into a clean folder hierarchy, with top-level folders aligned to products and departments.
+
+Most tickets in our workflow include a product tag. The plugin reads that tag and **automatically filters templates to only that product**.
+
+Instead of searching across 14+ categories, agents immediately land in the correct product context. This alone drastically reduces cognitive load.
+
+### 2. Title-First Search
+
+Veteran agents memorize keywords from template titles, not full bodies. So search is fuzzy but focused **strictly on template titles** by default. Fast. Predictable. Familiar.
+
+When deeper search is needed, agents can add a `/` to switch to body search instantly. This preserves speed while allowing flexibility.
+
+### 3. Multi-Select Template Insertion
+
+Complex tickets often require three to five templates in a single reply. Previously, agents had to:
+
+- Open the widget
+- Search
+- Insert
+- Close
+- Reopen
+- Repeat
+
+Now they can **select multiple templates in order and insert them in one action**. This alone removes repeated friction dozens of times per day.
+
+### 4. Automatic Personalized Greeting
+
+Every inserted template automatically prepends a greeting with the customer's name. The greeting rotates randomly across a bank of options.
+
+It seems small. It's not. Removing the need to think about micro-details like "What greeting should I use?" frees mental bandwidth for what matters: **solving the customer's problem**.
+
+### 5. Visual Product Recognition
+
+Each product folder includes its product icon. Nested templates inherit that icon. This creates **instant visual recognition** — agents can scan and know immediately what product they're working in without reading labels. It's faster to see than to read.
+
+### 6. One-Click AI-Formatted HTML Insertion
+
+One frustration in the new system was pasting AI-generated responses. Copying from ChatGPT often introduced odd formatting and paragraph spacing issues.
+
+Front's composer doesn't accept raw HTML pastes, but it **does** accept HTML inserted via API. So we added a bonus feature: if AI generates a response formatted in HTML, the plugin inserts it directly into the composer via API.
+
+Clean formatting. No extra breaks. No manual cleanup. That small improvement removes another layer of friction and mental strain.
+
+---
+
+## The Impact
+
+The effect was immediate and measurable:
+
+- **60% reduction in template search time** per ticket interaction
+- **90+ results narrowed to 5-10** through automatic product filtering
+- **Multi-select insertion eliminated 4-5 repeated widget cycles** per complex ticket
+- **40+ agents** across the CX team adopted the plugin within the first week
+- **Agent output recovered** to pre-migration levels within two weeks of deployment
+
+This reinforced something I believe strongly:
+
+> Operational improvement doesn't always come from sweeping transformation. It often comes from removing the small, repeated obstacles that quietly drain momentum every single day. When you clear micro-frictions for the people closest to the work, progress compounds.
+
+---
+
+## Built With Claude Code
+
+This entire plugin was built using **Claude Code** — from architecture decisions to implementation. It was a real-world example of using AI-assisted development to ship a production tool that immediately impacted team operations.
+
+---
+
+## What This Meant for Me
+
+This was my first major project completed in my new role. It reminded me that the clearest path to operational improvement often comes from people who have done the work themselves.
+
+Give them context. Give them tools. Give them permission to build. The momentum and solutions that follow can be remarkable.

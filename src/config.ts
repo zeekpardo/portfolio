@@ -1,8 +1,8 @@
 export const SITE = {
-    website: "https://groovi.pro", // Update when deployed
-    title: "Zeek Pardo - Technical Operations Specialist",
-    description: "Business Systems Architect | AI Automation Expert | Support Operations",
-    tags: ["portfolio", "automation", "AI systems", "full-stack developer"],
+    website: "https://zeekpardo.com", // Update when deployed
+    title: "Zeek Pardo - AI Operations Engineer",
+    description: "AI Operations Engineer | Support Systems Architect | AI Agent Builder",
+    tags: ["portfolio", "AI operations", "AI agent systems", "support engineering", "AI-assisted development"],
     ogImage: "/og-image.webp",
     logo: "logo",
     logoText: "ZeekPardo",
@@ -15,20 +15,20 @@ export const SITE = {
 
 export const ME = {
     name: "Zeek Pardo",
-    profession: "Technical Operations | Automation | AI Systems Specialist",
+    profession: "AI Operations Engineer",
     profileImage: "zeek-avatar.png",
     profileFacts: [
         {
             value: 6,
-            description: "Years at Planning Center"
+            description: "Years in Support Operations"
         },
         {
-            value: 12,
-            description: "AI Systems Built"
+            value: 15,
+            description: "AI Systems Deployed"
         },
         {
-            value: 12,
-            description: "Organizations Automated"
+            value: 5,
+            description: "Products Shipped"
         }
     ],
     contactInfo: {
@@ -36,7 +36,7 @@ export const ME = {
         linkedin: "https://www.linkedin.com/in/zeekpardo",
         resumeDoc: "resume.pdf",
     },
-    aboutMe: "I solve problems that slow people down by building actual systems that make friction disappear. From scaling Spanish support from zero to full coverage using custom AI, to architecting automation workflows for 500+ organizations, I turn 'we can't do that' into 'here's how.' My specialty is creating environments where people can do their best work while the repetitive parts fade into the background.",
+    aboutMe: "I architect AI agent systems that scale support operations. For 6 years I've operated inside a complex SaaS ecosystem of 13 interconnected products serving 4 million+ users, building AI agents, knowledge architectures, and automation workflows that turned a team of humans into a hybrid human+AI operation. I design the systems that make AI support actually work: knowledge bases optimized for AI consumption, intelligent escalation logic, conversation design, and performance monitoring loops that continuously improve resolution rates. My edge: I've handled the tickets, felt the friction, and built every system from the front line.",
 }
 
 export const SOCIALS = [

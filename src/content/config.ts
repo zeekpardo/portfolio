@@ -34,6 +34,7 @@ const projects = defineCollection({
         cover: image().optional(),
         tags: z.array(z.string()),
         ogImage: image().optional(),
+        demoVideo: z.string().optional(),
         relatedPrompts: z.array(reference('prompts')).optional(),
     }),
 });
@@ -45,7 +46,7 @@ const prompts = defineCollection({
         description: z.string(),
         category: z.string(),
         tags: z.array(z.string()),
-        prompt: z.string(),
+
         useCase: z.string(),
         publishDate: z.date(),
         updateDate: z.date().optional(),
