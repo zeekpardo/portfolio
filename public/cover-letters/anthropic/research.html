@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthropic - Interview Prep & Research Breakdown</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+        }
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .section-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+        .section-header:hover { background: #222; }
+        .section-header h2 {
+            font-size: 1.1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-number {
+            background: #d97706;
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: 700;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .chevron {
+            color: #666;
+            transition: transform 0.2s;
+            font-size: 1.2rem;
+        }
+        .section.open .chevron { transform: rotate(180deg); }
+        .section-body {
+            display: none;
+            padding: 0 20px 20px;
+            border-top: 1px solid #2a2a2a;
+        }
+        .section.open .section-body { display: block; }
+        h3 {
+            font-size: 0.95rem;
+            color: #d97706;
+            margin: 16px 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        p, li {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.65;
+        }
+        ul { padding-left: 20px; margin-bottom: 12px; }
+        li { margin-bottom: 6px; }
+        .highlight {
+            background: #d97706;
+            color: #000;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .callout {
+            background: #1e293b;
+            border-left: 3px solid #3b82f6;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+        }
+        .callout-title {
+            font-size: 0.8rem;
+            color: #60a5fa;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+        .callout p { color: #94a3b8; font-size: 0.85rem; }
+        .match {
+            background: #14532d;
+            border-left: 3px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 12px 0;
+        }
+        .match-title {
+            font-size: 0.8rem;
+            color: #4ade80;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+        .match p { color: #86efac; font-size: 0.85rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.85rem;
+        }
+        th {
+            text-align: left;
+            padding: 8px 12px;
+            background: #222;
+            color: #d97706;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #2a2a2a;
+            color: #ccc;
+        }
+        .tag {
+            display: inline-block;
+            background: #292524;
+            color: #a8a29e;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin: 2px;
+        }
+        .priority-high { border-left-color: #ef4444; }
+        .stat {
+            display: inline-block;
+            background: #1c1917;
+            border: 1px solid #292524;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 4px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #d97706;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .toc {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .toc a {
+            display: block;
+            padding: 10px 14px;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: border-color 0.2s;
+        }
+        .toc a:hover { border-color: #d97706; color: #fff; }
+        .toc-num { color: #d97706; font-weight: 700; margin-right: 6px; }
+        @media (max-width: 640px) {
+            .toc { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anthropic Interview Prep</h1>
+        <p class="subtitle">Support Operations Specialist - AI Agent Management | Deep Research Breakdown</p>
+
+        <!-- Key Stats -->
+        <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 32px;">
+            <div class="stat"><div class="stat-value">$380B</div><div class="stat-label">Valuation</div></div>
+            <div class="stat"><div class="stat-value">$14B</div><div class="stat-label">Run Rate</div></div>
+            <div class="stat"><div class="stat-value">58%</div><div class="stat-label">Fin Resolution</div></div>
+            <div class="stat"><div class="stat-value">40M+</div><div class="stat-label">Fin Conversations</div></div>
+            <div class="stat"><div class="stat-value">54%</div><div class="stat-label">Enterprise Code Market</div></div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <a href="#s1"><span class="toc-num">01</span> The Role Decoded</a>
+            <a href="#s2"><span class="toc-num">02</span> Anthropic's Mission & Values</a>
+            <a href="#s3"><span class="toc-num">03</span> How They're Different</a>
+            <a href="#s4"><span class="toc-num">04</span> Intercom Fin Deep Dive</a>
+            <a href="#s5"><span class="toc-num">05</span> Fin Architecture & Config</a>
+            <a href="#s6"><span class="toc-num">06</span> Conversation Design</a>
+            <a href="#s7"><span class="toc-num">07</span> Stripe & Integrations</a>
+            <a href="#s8"><span class="toc-num">08</span> Key Research to Know</a>
+            <a href="#s9"><span class="toc-num">09</span> Your Experience Match</a>
+            <a href="#s10"><span class="toc-num">10</span> Interview Talking Points</a>
+        </div>
+
+        <!-- SECTION 1: Role Decoded -->
+        <div class="section open" id="s1">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">01</span> The Role Decoded</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <p>This is not a traditional support ops role. It sits at the <strong>intersection of conversation design and support automation</strong>. You're shaping how their AI agent (Fin) communicates AND building the backend scaffolding that lets it take real action.</p>
+
+                <h3>What You'd Actually Do Day-to-Day</h3>
+                <ul>
+                    <li><strong>Configure Fin's brain</strong> &mdash; Write Guidance rules (natural language instructions) that control tone, policies, and behavior</li>
+                    <li><strong>Build integrations</strong> &mdash; Connect Fin to Stripe, status pages, and internal systems so it can process refunds, look up subscriptions, surface incident status</li>
+                    <li><strong>Design conversation flows</strong> &mdash; Triage logic, handoff behaviors, escalation paths between AI and human support</li>
+                    <li><strong>Build Procedures</strong> &mdash; Multi-step workflows for transactional actions (refunds, subscription changes) with guardrails and validation</li>
+                    <li><strong>Monitor and optimize</strong> &mdash; Track resolution rates, automation rates, CSAT, escalation patterns. Use data to iterate.</li>
+                    <li><strong>Own Fin over email</strong> &mdash; Ensure consistent AI quality across chat and email channels</li>
+                </ul>
+
+                <h3>The Goal</h3>
+                <p>Not just an AI that <em>answers questions</em> &mdash; an AI that <strong>resolves issues end-to-end</strong>: processing refunds, managing subscriptions, verifying account details, and routing complex cases to the right humans at the right time.</p>
+
+                <div class="match">
+                    <div class="match-title">Your Direct Match</div>
+                    <p>You've already done this. Your Spanish Support AI system, Front Composer Plugin, AI Custom Report Builder, and Grant Application Coach are all examples of building AI systems that take action, not just answer questions. You've configured AI agents, built integrations, designed conversation flows, and measured outcomes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Mission & Values -->
+        <div class="section" id="s2">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">02</span> Anthropic's Mission & Values</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>The Mission</h3>
+                <p>"To ensure the world safely makes the transition through transformative AI." Structured as a <strong>public-benefit corporation</strong> with a Long-Term Benefit Trust.</p>
+
+                <h3>Constitutional AI (Their Signature Innovation)</h3>
+                <p>Instead of relying purely on human labelers (RLHF), they train models to self-evaluate against a written set of principles &mdash; a "constitution." This introduced <strong>RLAIF</strong> (Reinforcement Learning from AI Feedback).</p>
+
+                <h3>The 4-Tier Priority Hierarchy (January 2026 Constitution)</h3>
+                <table>
+                    <tr><th>Priority</th><th>Description</th></tr>
+                    <tr><td>1. Safety</td><td>Being safe and supporting human oversight</td></tr>
+                    <tr><td>2. Ethics</td><td>Behaving ethically</td></tr>
+                    <tr><td>3. Guidelines</td><td>Following Anthropic's guidelines</td></tr>
+                    <tr><td>4. Helpfulness</td><td>Being genuinely helpful</td></tr>
+                </table>
+
+                <h3>Key Shift in 2026</h3>
+                <p>Moved from <strong>rule-based</strong> to <strong>reason-based</strong> alignment &mdash; explaining the <em>logic</em> behind ethical principles so Claude can reason about novel situations rather than pattern-match against rules.</p>
+
+                <div class="callout">
+                    <div class="callout-title">Key Insight</div>
+                    <p>Anthropic sees safety and helpfulness as complementary, not opposed. This mirrors how good support ops works: guardrails that protect customers AND enable faster resolution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: How They're Different -->
+        <div class="section" id="s3">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">03</span> How They're Different</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>"Big Science" Philosophy</h3>
+                <p>Anthropic believes the highest-impact AI research is <strong>big science</strong>. They work as a single cohesive team on a few large-scale research efforts. They view AI research as an empirical science with more in common with <strong>physics and biology</strong> than traditional CS.</p>
+
+                <h3>Cultural Values</h3>
+                <ul>
+                    <li><strong>High-trust, low-ego</strong> &mdash; communicate kindly and directly, assume good intentions even in disagreement</li>
+                    <li><strong>"Do more with less"</strong> &mdash; historically competitive with fewer compute resources, relying on researcher creativity</li>
+                    <li><strong>Mission over prestige</strong> &mdash; they hire people motivated by the mission, not personal brand</li>
+                    <li><strong>Extreme collaboration</strong> &mdash; frequent research discussions, communication skills highly valued</li>
+                    <li><strong>Credentials don't matter</strong> &mdash; about half have PhDs, about half had no prior ML experience, some never went to college</li>
+                </ul>
+
+                <h3>Their Build-vs-Buy Wisdom</h3>
+                <p>Despite being the world's best AI company, Anthropic <strong>chose Intercom's Fin</strong> for support rather than building their own. Reasoning: engineering capacity is better spent on core AI research. They even used Claude to prepare content for training Fin.</p>
+
+                <div class="callout">
+                    <div class="callout-title">What This Means for You</div>
+                    <p>They value strategic judgment. Knowing when to build custom vs. leverage existing tools is a core competency they respect. Your experience building custom tools (Front Plugin) AND leveraging existing AI platforms (Custom GPTs) demonstrates exactly this.</p>
+                </div>
+
+                <h3>Key Research to Reference</h3>
+                <ul>
+                    <li><strong>GPT-3</strong> &mdash; Team members contributed to the original GPT-3 paper at OpenAI before founding Anthropic</li>
+                    <li><strong>Circuit-Based Interpretability</strong> &mdash; Understanding what happens inside neural networks at the circuit level</li>
+                    <li><strong>Multimodal Neurons</strong> &mdash; Neurons that respond to the same concept across text and images</li>
+                    <li><strong>Scaling Laws</strong> &mdash; Empirical relationships between compute/data/parameters and capability</li>
+                    <li><strong>AI & Compute</strong> &mdash; How computational resources shape AI progress</li>
+                    <li><strong>Concrete Problems in AI Safety</strong> &mdash; Foundational taxonomy of safety challenges</li>
+                    <li><strong>Learning from Human Preferences</strong> &mdash; The RLHF approach that preceded Constitutional AI</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Intercom Fin Deep Dive -->
+        <div class="section" id="s4">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">04</span> Intercom Fin Deep Dive</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>What Fin Is</h3>
+                <p>Intercom's AI support agent, now on <strong>Fin 3</strong> (launched at Pioneer 2025). Built on <strong>RAG</strong> (Retrieval-Augmented Generation) &mdash; combining powerful search with LLMs trained on real customer service conversations. Operates across chat, email, phone, Slack, and Discord.</p>
+
+                <h3>Fin at Anthropic &mdash; The Numbers</h3>
+                <ul>
+                    <li><strong>58% resolution rate</strong> on conversations Fin touches</li>
+                    <li><strong>40,000-50,000 resolutions/month</strong></li>
+                    <li>Live and answering questions <strong>within one week</strong> of implementation</li>
+                    <li>Anthropic used Claude to prepare content and generate snippets for training Fin</li>
+                </ul>
+
+                <h3>The Fin Flywheel</h3>
+                <p>Intercom's continuous improvement methodology:</p>
+                <table>
+                    <tr><th>Phase</th><th>What Happens</th></tr>
+                    <tr><td>Train</td><td>Add/improve knowledge sources, write Guidance rules, build Procedures</td></tr>
+                    <tr><td>Test</td><td>Run Simulations (automated multi-turn test conversations)</td></tr>
+                    <tr><td>Deploy</td><td>Ship to customers across channels</td></tr>
+                    <tr><td>Analyze</td><td>Monitor resolution rates, CSAT, escalation patterns, content performance</td></tr>
+                </table>
+
+                <h3>Fin vs Traditional Chatbots</h3>
+                <table>
+                    <tr><th>Traditional Chatbot</th><th>Fin AI Agent</th></tr>
+                    <tr><td>Scripted decision trees</td><td>Reasons through queries using LLM</td></tr>
+                    <tr><td>Answers questions only</td><td>Takes actions (refunds, lookups, subscriptions)</td></tr>
+                    <tr><td>Single channel</td><td>Chat, email, phone, Slack, Discord</td></tr>
+                    <tr><td>Manual triage</td><td>AI-detected Attributes for auto-classification</td></tr>
+                    <tr><td>Rigid flows</td><td>Procedures with code conditions + natural language</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Fin Architecture & Configuration -->
+        <div class="section" id="s5">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">05</span> Fin Architecture & Configuration</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>Guidance (Fin > Train > Guidance)</h3>
+                <p>Natural-language instructions that coach Fin's behavior. Written in plain English, not code.</p>
+                <ul>
+                    <li><strong>Communication style</strong> &mdash; Tone, voice, terminology to match brand</li>
+                    <li><strong>Context and clarification</strong> &mdash; When to ask follow-up questions</li>
+                    <li><strong>Content and sources</strong> &mdash; Which knowledge sources to prioritize</li>
+                    <li><strong>Escalation guidance</strong> &mdash; Nuanced, scenario-based handoff rules in natural language</li>
+                    <li>Each rule has a <strong>channel selector</strong> (Chat, Email, Voice) for channel-specific behavior</li>
+                </ul>
+                <div class="callout">
+                    <div class="callout-title">Best Practice</div>
+                    <p>Keep each rule short and single-purpose. Multiple simple rules beat one complex rule. Review for contradictions &mdash; conflicting guidance makes Fin unpredictable. Never add blanket "always offer to escalate" guidance (kills resolution rate).</p>
+                </div>
+
+                <h3>Fin Attributes (Replaced AI Category Detection)</h3>
+                <p>AI-detected conversation metadata. Fin automatically classifies conversations against attributes you define (issue category, urgency, sentiment, product area). No manual tagging required.</p>
+                <ul>
+                    <li>Power <strong>Escalation Rules</strong> (deterministic routing)</li>
+                    <li>Drive <strong>workflow branches</strong> (route by detected intent)</li>
+                    <li>Feed <strong>reports and analytics</strong></li>
+                    <li>Pass context to external systems via <strong>Data Connectors</strong></li>
+                </ul>
+
+                <h3>Procedures (Replaced Fin Tasks)</h3>
+                <p>Multi-step instruction flows combining natural language, code, and API calls:</p>
+                <table>
+                    <tr><th>Step Type</th><th>Purpose</th></tr>
+                    <tr><td>Instruction</td><td>Natural language directions for Fin</td></tr>
+                    <tr><td>Data Connector</td><td>Fetch/push data to external APIs</td></tr>
+                    <tr><td>Code</td><td>Deterministic logic (guaranteed same output for same input)</td></tr>
+                    <tr><td>Conditional</td><td>Decision points and branching</td></tr>
+                    <tr><td>Checkpoint</td><td>Pause for human approval on high-stakes actions</td></tr>
+                    <tr><td>Sub-procedure</td><td>Call other procedures for modularity</td></tr>
+                </table>
+
+                <h3>Escalation: Two Mechanisms</h3>
+                <table>
+                    <tr><th>Escalation Rules</th><th>Escalation Guidance</th></tr>
+                    <tr><td>Deterministic, data-based</td><td>Nuanced, scenario-based</td></tr>
+                    <tr><td>Structured attributes trigger</td><td>Natural language interpretation</td></tr>
+                    <tr><td>"Customer plan IS Enterprise"</td><td>"If customer mentions legal action"</td></tr>
+                    <tr><td>Fires automatically on data match</td><td>Fin interprets intent/behavior</td></tr>
+                </table>
+
+                <h3>Guardrails & Safety</h3>
+                <ul>
+                    <li><strong>Checkpoints</strong> &mdash; Fin stops for human approval before high-stakes actions</li>
+                    <li><strong>Code conditions</strong> &mdash; Deterministic checks the LLM cannot override (refund eligibility, amount thresholds)</li>
+                    <li><strong>Defensive prompting</strong> &mdash; Protective instructions injected when LLM reads user input (prompt injection defense)</li>
+                    <li><strong>RAG grounding</strong> &mdash; Answers based on provided knowledge sources, not open internet</li>
+                    <li><strong>SOC 2 compliance</strong> &mdash; All interactions logged and auditable</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SECTION 6: Conversation Design -->
+        <div class="section" id="s6">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">06</span> Conversation Design</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>Triage Architecture</h3>
+                <p>Best practice: create one <strong>master Triage Workflow</strong> that fires on every new conversation (trigger: "When a customer sends their first message"), with all routing branches inside it. Fin Attributes automatically classify inbound conversations for smart routing.</p>
+
+                <h3>Handoff Design Principles</h3>
+                <ul>
+                    <li>Communicate <strong>that</strong> you're escalating, <strong>why</strong>, what to expect, and estimated wait times</li>
+                    <li>Pass a <strong>full conversation summary</strong> and customer data to the human agent (warm handoff)</li>
+                    <li>Fin generates an <strong>AI summary</strong> as an internal note at handoff</li>
+                    <li>Use <strong>skills-based routing</strong>: billing &rarr; finance team, technical &rarr; product team</li>
+                </ul>
+
+                <h3>Escalation Triggers</h3>
+                <ul>
+                    <li>Customer explicitly asks for a human</li>
+                    <li>Fin misunderstands 2-3 times consecutively</li>
+                    <li>Sentiment analysis detects frustration</li>
+                    <li>Immediate-escalation keywords: "fraud," "emergency," "legal," "account locked," "outage"</li>
+                </ul>
+
+                <h3>The Key Failure Point</h3>
+                <p>The failure point in most AI support systems is <strong>not the automation &mdash; it's the handoff</strong>. The gap between AI and human is where customer trust breaks down.</p>
+
+                <div class="match">
+                    <div class="match-title">Your Direct Match</div>
+                    <p>Your Grant Application Coach used the same principles: objective-based architecture where each conversation stage has one specific purpose, with automatic language detection, targeted follow-ups, and focused context per interaction to prevent hallucination.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 7: Stripe & Integrations -->
+        <div class="section" id="s7">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">07</span> Stripe & Integrations</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>How Fin Connects to External Systems</h3>
+                <p><strong>Data Connectors</strong> &mdash; configured API calls that Fin invokes during Procedures. Each step must complete before the next (sequential, not parallel).</p>
+
+                <h3>Stripe Integration Capabilities</h3>
+                <ul>
+                    <li>Surface customer details: subscription plan, recent payments, billing history</li>
+                    <li>Process refunds under custom rules (e.g., auto-refund if &lt;$50 and within 30 days)</li>
+                    <li>Manage subscription lifecycle: upgrades, downgrades, cancellations</li>
+                    <li>Read-only vs. read-write access controls per action type</li>
+                </ul>
+
+                <h3>Example Refund Procedure</h3>
+                <table>
+                    <tr><th>Step</th><th>Type</th><th>Action</th></tr>
+                    <tr><td>1</td><td>Instruction</td><td>Ask customer for order number</td></tr>
+                    <tr><td>2</td><td>Data Connector</td><td>Look up order in Stripe</td></tr>
+                    <tr><td>3</td><td>Code Condition</td><td>Check if within refund window (deterministic)</td></tr>
+                    <tr><td>4</td><td>Conditional</td><td>If eligible, proceed; if not, explain policy</td></tr>
+                    <tr><td>5</td><td>Checkpoint</td><td>Pause for manager approval if refund &gt; $500</td></tr>
+                    <tr><td>6</td><td>Data Connector</td><td>Issue refund via Stripe API</td></tr>
+                    <tr><td>7</td><td>Instruction</td><td>Confirm refund to customer with timeline</td></tr>
+                </table>
+
+                <h3>Permission Boundaries</h3>
+                <p>Define clearly what Fin can do <strong>autonomously</strong> (check payment status, look up invoices) vs. what requires <strong>human approval</strong> (large refunds, account closures, custom pricing).</p>
+            </div>
+        </div>
+
+        <!-- SECTION 8: Key Research -->
+        <div class="section" id="s8">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">08</span> Key Research to Know</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>Must-Know Research</h3>
+                <table>
+                    <tr><th>Paper/Concept</th><th>Why It Matters</th></tr>
+                    <tr><td>Constitutional AI (2022)</td><td>Their signature alignment technique. Models self-evaluate against principles. Introduced RLAIF.</td></tr>
+                    <tr><td>Circuit Tracing (2025)</td><td>Traced Claude's internal "thoughts" via attribution graphs. Named a "2026 Breakthrough Technology" by MIT.</td></tr>
+                    <tr><td>Monosemanticity</td><td>Making individual neurons represent single concepts instead of many (polysemanticity). Enables steering and auditing.</td></tr>
+                    <tr><td>Scaling Laws</td><td>Empirical relationships between compute/data/parameters and model capability. Guides resource allocation.</td></tr>
+                </table>
+
+                <h3>Terminology You Must Know</h3>
+                <ul>
+                    <li><strong>RLHF</strong> &mdash; Reinforcement Learning from Human Feedback</li>
+                    <li><strong>RLAIF</strong> &mdash; Reinforcement Learning from AI Feedback (Anthropic coined this)</li>
+                    <li><strong>Polysemanticity</strong> &mdash; Neurons representing multiple concepts (the problem)</li>
+                    <li><strong>Monosemanticity</strong> &mdash; Neurons representing single concepts (the goal)</li>
+                    <li><strong>Attribution graphs</strong> &mdash; Visualizations of a model's internal reasoning chain</li>
+                    <li><strong>Alignment tax</strong> &mdash; Performance cost of making models safer (Anthropic minimizes this)</li>
+                    <li><strong>RAG</strong> &mdash; Retrieval-Augmented Generation (how Fin grounds answers)</li>
+                </ul>
+
+                <div class="callout">
+                    <div class="callout-title">Dario Amodei's Key Quote</div>
+                    <p>"The Urgency of Interpretability" &mdash; You can't fix what you can't see inside. Being able to reference this and explain why interpretability matters for safety shows genuine understanding.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 9: Your Experience Match -->
+        <div class="section" id="s9">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">09</span> Your Experience Match</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>Requirement-by-Requirement Mapping</h3>
+                <table>
+                    <tr><th>They Want</th><th>You Have</th></tr>
+                    <tr>
+                        <td>3+ years support ops / AI agent config</td>
+                        <td>6 years at Planning Center. Built 15 AI systems including Custom GPTs, conversational AI, and support automation.</td>
+                    </tr>
+                    <tr>
+                        <td>Hands-on AI agent / chatbot configuration</td>
+                        <td>Spanish Support AI (Custom GPT with 150+ term mappings), Grant Coach (WhatsApp conversational AI in 11 languages), Bug Report Automation GPT.</td>
+                    </tr>
+                    <tr>
+                        <td>Conversation design thinking</td>
+                        <td>Grant Coach uses objective-based architecture &mdash; each stage has one purpose, preventing hallucination through focused scope. Your blog post "Why I Stopped Building One Giant Prompt" is literally about this.</td>
+                    </tr>
+                    <tr>
+                        <td>Technically comfortable with APIs / integrations</td>
+                        <td>Built Front Composer Plugin (API integration), Groovi QR (full-stack SaaS with Stripe/Clerk), Launch Club (Supabase Edge Functions), MakerVault (Rust + Tauri).</td>
+                    </tr>
+                    <tr>
+                        <td>Guardrails, edge cases, safe execution</td>
+                        <td>Grant Coach: modular objectives prevent hallucination. Spanish AI: confidence scoring + quality safeguards. Front Plugin: product filtering with validation logic.</td>
+                    </tr>
+                    <tr>
+                        <td>Data-driven approach (metrics)</td>
+                        <td>Front Plugin: 60% reduction in search time, 90+ results narrowed to 5-10. Spanish AI: 100% team adoption. Training: 60% faster onboarding, 80% time reduction.</td>
+                    </tr>
+                    <tr>
+                        <td>Manage multiple in-flight projects</td>
+                        <td>Currently running 3 roles simultaneously: Support Ops Specialist + 2 founder positions. Shipped MakerVault in 72 hours while maintaining other responsibilities.</td>
+                    </tr>
+                    <tr>
+                        <td>Excited about AI transforming support</td>
+                        <td>Your blog post "Agent-First AI" literally argues for this. You don't just use AI &mdash; you've written a framework for how AI transforms support from reactive ticket resolution to proactive problem solving.</td>
+                    </tr>
+                </table>
+
+                <h3>"Strong Candidates May Also Have"</h3>
+                <table>
+                    <tr><th>Bonus</th><th>You Have</th></tr>
+                    <tr><td>Conversation design / UX writing</td><td>Grant Coach conversation design, Support Response Template prompt, Video Production Assistant</td></tr>
+                    <tr><td>Automated transactional workflows</td><td>Groovi QR (subscription/billing), AI Custom Report Builder (automated code generation)</td></tr>
+                    <tr><td>Support metrics frameworks</td><td>Tracked automation rates, adoption rates, time savings, CSAT impacts across all AI systems</td></tr>
+                    <tr><td>Stripe / payment systems</td><td>Groovi QR built on Stripe via Clerk for subscription billing</td></tr>
+                    <tr><td>Support engineering background</td><td>6 years progressing from Support Agent to Specialist to Operations, building engineering solutions throughout</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 10: Interview Talking Points -->
+        <div class="section" id="s10">
+            <div class="section-header" onclick="this.parentElement.classList.toggle('open')">
+                <h2><span class="section-number">10</span> Interview Talking Points</h2>
+                <span class="chevron">&#9660;</span>
+            </div>
+            <div class="section-body">
+                <h3>Lead With These</h3>
+                <ul>
+                    <li><strong>"I've been on both sides."</strong> I've handled the tickets AND built the AI systems. Every system I build comes from real front-line friction, not theoretical problems.</li>
+                    <li><strong>"I think in conversation design."</strong> My Grant Coach doesn't use one giant prompt. Each conversation stage has a single objective with limited scope &mdash; that's how you prevent hallucination and maintain quality at scale.</li>
+                    <li><strong>"I build for adoption, not just functionality."</strong> My Spanish Support AI hit 100% team adoption because I designed it for the people closest to the problem. A tool nobody uses is worse than no tool.</li>
+                    <li><strong>"I understand guardrails aren't restrictions &mdash; they're what make automation trustworthy."</strong> My Grant Coach uses confidence scoring and objective-based architecture. My report builder validates Liquid syntax before delivery. Safety and speed are the same goal.</li>
+                </ul>
+
+                <h3>Anthropic-Specific Points</h3>
+                <ul>
+                    <li><strong>Mission alignment:</strong> "I wrote about Agent-First AI before seeing this role. The thesis &mdash; that AI support should have a self-improving knowledge loop &mdash; aligns directly with the Fin Flywheel's Train > Test > Deploy > Analyze cycle."</li>
+                    <li><strong>Constitutional AI parallel:</strong> "Your Guidance rules for Fin are essentially a support constitution &mdash; written principles that shape AI behavior. I've built the same thing: my Spanish AI has 150+ term mappings that act as guardrails while preserving natural conversation."</li>
+                    <li><strong>Build vs. buy:</strong> "I respect that Anthropic chose Fin instead of building in-house. I make the same decisions &mdash; I built a custom Front plugin where nothing existed, but use Custom GPTs where the platform handles the heavy lifting."</li>
+                </ul>
+
+                <h3>Questions to Ask Them</h3>
+                <ul>
+                    <li>"How does the Fin optimization roadmap get prioritized? Is it driven by conversation analysis, resolution rate gaps, or product team input?"</li>
+                    <li>"What's the current split between Procedures (AI-driven multi-step) and Workflows (deterministic paths) in your Fin setup?"</li>
+                    <li>"How does the support ops team's work feed back into Claude's development? Is there a formal loop between support insights and the research/product teams?"</li>
+                    <li>"What's your biggest current gap &mdash; is it Fin's knowledge base, its action capabilities, or the handoff experience to human agents?"</li>
+                    <li>"How do you think about the tension between Fin's resolution rate and ensuring complex cases still get the human attention they need?"</li>
+                </ul>
+
+                <h3>Values Alignment Answers</h3>
+                <div class="callout">
+                    <div class="callout-title">"When should AI refuse vs. try to help?"</div>
+                    <p>Frame around your experience: "In my Spanish Support AI, I built confidence scoring &mdash; when the system isn't sure about a translation or term, it flags for human review rather than guessing. The cost of a wrong answer in support is higher than the cost of a handoff. This mirrors Anthropic's constitutional priority hierarchy: safety first, helpfulness second."</p>
+                </div>
+                <div class="callout">
+                    <div class="callout-title">"What's your view on AI's societal impact?"</div>
+                    <p>Frame around real outcomes: "I've seen AI eliminate language barriers for an entire support team, enable non-technical people to write code, and scale a coaching program across 11 languages. The impact is real when you build for the people closest to the problem. But I've also seen what happens when you skip guardrails &mdash; which is why every system I build has validation, confidence scoring, or human checkpoints."</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    const section = target.closest('.section');
+                    if (section && !section.classList.contains('open')) {
+                        section.classList.add('open');
+                    }
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

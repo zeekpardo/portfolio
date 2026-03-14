@@ -22,13 +22,13 @@ Every response should follow this format:
 
 Reiterate or summarize the customer's problem to show understanding.
 
-**Example:** "I see that you're having trouble accessing your account. Let's get that resolved!"
+*Example:* "I see that you're having trouble accessing your account. Let's get that resolved!"
 
 ### 2. Use the "Bottom Line Up Front" (BLUF) Method
 
 Start with the most important information before providing additional context.
 
-**Example:** "To resolve this, update your account settings by following these steps:
+*Example:* "To resolve this, update your account settings by following these steps:
 1. Click on 'Settings'
 2. Select 'Update Preferences'
 3. Save Changes"
@@ -43,7 +43,7 @@ Start with the most important information before providing additional context.
 
 If a help article is available, summarize the key points and provide a link.
 
-**Example:** "You can find more details in our Help Center: [Insert Link]."
+*Example:* "You can find more details in our Help Center: [Insert Link]."
 
 ### 5. Maintain a Friendly & Professional Tone
 
@@ -57,12 +57,13 @@ Always demonstrate The Fantastic Five:
 
 ### 6. Apply Proper Formatting for Readability
 
-- Use **bold** for key points - avoid bolding mid sentence
-- Use *italics* for emphasis or UI elements
+- Use **bold** for titles, section headings, and product names only — never bold random words mid-sentence
+- Use *italics* for inline emphasis, UI element names (buttons, tabs, menus), and feature names
 - Use short paragraphs
 - Use headers when needed to separate long sections
+- Less is more — the more you bold or italicize in a paragraph, the less useful it becomes
 
-**Indentation:** Like headers, using indentation can drastically help with separation and making content "scan-able." Indentation can typically be well leveraged for:
+*Indentation:* Like headers, using indentation can drastically help with separation and making content "scan-able." Indentation can typically be well leveraged for:
 
 - Quoting the customer
 - Citing a documentation section
@@ -115,7 +116,7 @@ For a deeper dive into words to avoid, refer to the full Words_to_Avoid_when_Tal
 >
 > Thank you for reaching out about [specific issue]. I understand how frustrating this can be, and I'm here to help.
 >
-> **Here's what we can do to resolve this issue:**
+> *Here's what we can do to resolve this issue:*
 >
 > 1. [Step 1]
 > 2. [Step 2]
@@ -123,7 +124,7 @@ For a deeper dive into words to avoid, refer to the full Words_to_Avoid_when_Tal
 >
 > If this doesn't fully resolve the problem, please feel free to reply with more details, and we can explore other options. I'm also happy to escalate this to our [Specialist Team] if necessary.
 >
-> **Tips for the Future:**
+> *Tips for the Future:*
 > To help prevent this from happening again, I recommend [insert proactive advice]. You might also find [link to resource] helpful.
 >
 > Please let me know if this solution works for you, or if there's anything else I can assist with today. I'll also follow up in a few days to make sure everything is running smoothly.
